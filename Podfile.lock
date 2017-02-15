@@ -1,3 +1,18 @@
-PODFILE CHECKSUM: 67f3e61834ad89490d0f1c15c02487e573ce21b7
+PODS:
+  - Kingfisher (3.2.4)
+  - SnapKit (3.0.2)
+  - UIScrollView-InfiniteScroll (1.0.0)
+
+DEPENDENCIES:
+  - Kingfisher (~> 3.0)
+  - SnapKit (~> 3.0.2)
+  - UIScrollView-InfiniteScroll
+
+SPEC CHECKSUMS:
+  Kingfisher: 8d80f39da403cd9c9ee11984e1655f4d6a566cdb
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
+  UIScrollView-InfiniteScroll: d26885be71caca7485cdb37eab513a8f89036bb0
+
+PODFILE CHECKSUM: ef26b70f5a3f87018d6a8501cfb8d005bd32a49e
 
 COCOAPODS: 1.2.0.beta.3

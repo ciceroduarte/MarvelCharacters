@@ -178,6 +178,7 @@
 				F45DD3881E55180600ABFFBA /* Resources */,
 				DB9EF1CC18F3D68DF1132048 /* [CP] Embed Pods Frameworks */,
 				7331DF051F2C8E556D080D96 /* [CP] Copy Pods Resources */,
+				F422E86F1E551B2E00788F6E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -439,6 +440,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F422E86F1E551B2E00788F6E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -696,6 +710,7 @@
 				F45DD3B41E55180700ABFFBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F45DD3B51E55180700ABFFBA /* Build configuration list for PBXNativeTarget "MarvelCharactersTests" */ = {
 			isa = XCConfigurationList;
@@ -704,6 +719,7 @@
 				F45DD3B71E55180700ABFFBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F45DD3B81E55180700ABFFBA /* Build configuration list for PBXNativeTarget "MarvelCharactersUITests" */ = {
 			isa = XCConfigurationList;
@@ -712,6 +728,7 @@
 				F45DD3BA1E55180700ABFFBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

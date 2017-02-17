@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Representable {
-    init?(withRepresentation: Dictionary<String, Any>?)
+    init?(withRepresentation representation: [String: Any]?)
 }

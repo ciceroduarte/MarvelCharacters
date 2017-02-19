@@ -6,8 +6,5 @@
 //  Copyright © 2017 ciceroduarte. All rights reserved.
 //
 
-#ifndef MarvelCharacters_Bridging_Header_h
-#define MarvelCharacters_Bridging_Header_h
-
-
-#endif /* MarvelCharacters_Bridging_Header_h */
+#import <CommonCrypto/CommonCrypto.h>
+#import <UIScrollView_InfiniteScroll/UIScrollView+InfiniteScroll.h>

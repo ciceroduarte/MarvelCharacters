@@ -11,4 +11,5 @@ import Foundation
 enum FetchError: Error {
     case invalidJSONData
     case networkFailed
+    case limite
 }

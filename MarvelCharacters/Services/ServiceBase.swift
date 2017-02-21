@@ -59,13 +59,7 @@ class ServiceBase {
                     resultList.append(r)
                 }
             })
-            
-            if Thread.isMainThread {
-                print("IS MAIN THREAD!")
-            } else {
-                print("NOT MAIN THREAD!")
-            }
-            
+
             DispatchQueue.main.async {
                 completionHandler(Result.success(resultList))
             }

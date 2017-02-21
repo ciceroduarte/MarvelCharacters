@@ -10,6 +10,10 @@
 		02063BF30B93BFE60DB09995 /* Pods_MarvelCharactersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6A2A3A38EC0D86A0B68D37 /* Pods_MarvelCharactersUITests.framework */; };
 		0F29DADB0C5B5C20C90F7D18 /* Pods_MarvelCharactersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AA348C36963A9F9243A696 /* Pods_MarvelCharactersTests.framework */; };
 		6B3E7B7C973C0F367C00E2F7 /* Pods_MarvelCharacters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A3E9A7B0FF0AEA02A0B4F4 /* Pods_MarvelCharacters.framework */; };
+		F42457FF1E57B8BF00EEDCF6 /* ServiceBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42457FE1E57B8BF00EEDCF6 /* ServiceBase.swift */; };
+		F42458011E57B96B00EEDCF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42458001E57B96B00EEDCF6 /* Constants.swift */; };
+		F42458031E57BA0200EEDCF6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42458021E57BA0200EEDCF6 /* Result.swift */; };
+		F42458051E57BA2700EEDCF6 /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42458041E57BA2700EEDCF6 /* FetchError.swift */; };
 		F427ED4C1E5667D9008B72D7 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F427ED4B1E5667D9008B72D7 /* Image.swift */; };
 		F427ED4E1E566A1C008B72D7 /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F427ED4D1E566A1C008B72D7 /* CharacterTests.swift */; };
 		F427ED501E567438008B72D7 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F427ED4F1E567438008B72D7 /* Character.swift */; };
@@ -21,6 +25,12 @@
 		F45DD3981E55180600ABFFBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45DD3961E55180600ABFFBA /* LaunchScreen.storyboard */; };
 		F45DD3A31E55180700ABFFBA /* MarvelCharactersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DD3A21E55180700ABFFBA /* MarvelCharactersTests.swift */; };
 		F45DD3AE1E55180700ABFFBA /* MarvelCharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DD3AD1E55180700ABFFBA /* MarvelCharactersUITests.swift */; };
+		F465E8261E59F37000F5CA4B /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465E8251E59F37000F5CA4B /* URLSessionProtocol.swift */; };
+		F465E82C1E59F93700F5CA4B /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465E82B1E59F93700F5CA4B /* MockURLSession.swift */; };
+		F465E8301E5A20D700F5CA4B /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465E82F1E5A20D700F5CA4B /* URLSessionDataTaskProtocol.swift */; };
+		F465E8321E5A216400F5CA4B /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465E8311E5A216400F5CA4B /* MockURLSessionDataTask.swift */; };
+		F465E8351E5A58B400F5CA4B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465E8341E5A58B400F5CA4B /* StringExtension.swift */; };
+		F465E8371E5A629E00F5CA4B /* ServiceBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465E8361E5A629E00F5CA4B /* ServiceBaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +60,10 @@
 		AFF90F9F5A2176330B9EFB1E /* Pods-MarvelCharacters.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharacters.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters.release.xcconfig"; sourceTree = "<group>"; };
 		CB6A2A3A38EC0D86A0B68D37 /* Pods_MarvelCharactersUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharactersUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AA348C36963A9F9243A696 /* Pods_MarvelCharactersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharactersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F42457FE1E57B8BF00EEDCF6 /* ServiceBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceBase.swift; sourceTree = "<group>"; };
+		F42458001E57B96B00EEDCF6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F42458021E57BA0200EEDCF6 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		F42458041E57BA2700EEDCF6 /* FetchError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
 		F427ED4B1E5667D9008B72D7 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		F427ED4D1E566A1C008B72D7 /* CharacterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
 		F427ED4F1E567438008B72D7 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -67,6 +81,13 @@
 		F45DD3A91E55180700ABFFBA /* MarvelCharactersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelCharactersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45DD3AD1E55180700ABFFBA /* MarvelCharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersUITests.swift; sourceTree = "<group>"; };
 		F45DD3AF1E55180700ABFFBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F465E8251E59F37000F5CA4B /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		F465E82B1E59F93700F5CA4B /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		F465E82F1E5A20D700F5CA4B /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
+		F465E8311E5A216400F5CA4B /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		F465E8331E5A575300F5CA4B /* MarvelCharacters-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarvelCharacters-Bridging-Header.h"; sourceTree = "<group>"; };
+		F465E8341E5A58B400F5CA4B /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		F465E8361E5A629E00F5CA4B /* ServiceBaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceBaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +146,9 @@
 			children = (
 				F427ED4F1E567438008B72D7 /* Character.swift */,
 				F427ED4B1E5667D9008B72D7 /* Image.swift */,
+				F42458001E57B96B00EEDCF6 /* Constants.swift */,
+				F42458021E57BA0200EEDCF6 /* Result.swift */,
+				F42458041E57BA2700EEDCF6 /* FetchError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,6 +156,7 @@
 		F427ED401E566167008B72D7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F42457FE1E57B8BF00EEDCF6 /* ServiceBase.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -157,6 +182,7 @@
 				F45DD3941E55180600ABFFBA /* Assets.xcassets */,
 				F45DD3991E55180600ABFFBA /* Info.plist */,
 				F45DD3961E55180600ABFFBA /* LaunchScreen.storyboard */,
+				F465E8331E5A575300F5CA4B /* MarvelCharacters-Bridging-Header.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -164,6 +190,7 @@
 		F427ED441E5666F1008B72D7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F465E8341E5A58B400F5CA4B /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -172,6 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				F427ED511E567447008B72D7 /* Representable.swift */,
+				F465E8251E59F37000F5CA4B /* URLSessionProtocol.swift */,
+				F465E82F1E5A20D700F5CA4B /* URLSessionDataTaskProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -228,6 +257,9 @@
 				F427ED4D1E566A1C008B72D7 /* CharacterTests.swift */,
 				F45DD3A41E55180700ABFFBA /* Info.plist */,
 				F45DD3A21E55180700ABFFBA /* MarvelCharactersTests.swift */,
+				F465E82B1E59F93700F5CA4B /* MockURLSession.swift */,
+				F465E8311E5A216400F5CA4B /* MockURLSessionDataTask.swift */,
+				F465E8361E5A629E00F5CA4B /* ServiceBaseTests.swift */,
 			);
 			path = MarvelCharactersTests;
 			sourceTree = "<group>";
@@ -536,10 +568,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F465E8261E59F37000F5CA4B /* URLSessionProtocol.swift in Sources */,
 				F45DD3901E55180600ABFFBA /* ViewController.swift in Sources */,
 				F427ED501E567438008B72D7 /* Character.swift in Sources */,
+				F42457FF1E57B8BF00EEDCF6 /* ServiceBase.swift in Sources */,
 				F45DD38E1E55180600ABFFBA /* AppDelegate.swift in Sources */,
+				F42458011E57B96B00EEDCF6 /* Constants.swift in Sources */,
 				F427ED521E567447008B72D7 /* Representable.swift in Sources */,
+				F465E8351E5A58B400F5CA4B /* StringExtension.swift in Sources */,
+				F465E8301E5A20D700F5CA4B /* URLSessionDataTaskProtocol.swift in Sources */,
+				F42458051E57BA2700EEDCF6 /* FetchError.swift in Sources */,
+				F42458031E57BA0200EEDCF6 /* Result.swift in Sources */,
 				F427ED4C1E5667D9008B72D7 /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +587,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F465E82C1E59F93700F5CA4B /* MockURLSession.swift in Sources */,
+				F465E8321E5A216400F5CA4B /* MockURLSessionDataTask.swift in Sources */,
+				F465E8371E5A629E00F5CA4B /* ServiceBaseTests.swift in Sources */,
 				F45DD3A31E55180700ABFFBA /* MarvelCharactersTests.swift in Sources */,
 				F427ED4E1E566A1C008B72D7 /* CharacterTests.swift in Sources */,
 			);
@@ -698,6 +740,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.ciceroduarte.MarvelCharacters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MarvelCharacters/Resources/MarvelCharacters-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -711,6 +754,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.ciceroduarte.MarvelCharacters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MarvelCharacters/Resources/MarvelCharacters-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

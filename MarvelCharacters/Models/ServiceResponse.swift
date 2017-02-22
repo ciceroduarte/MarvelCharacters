@@ -19,12 +19,12 @@ struct ServiceResponse {
         guard let theData = data,
             let json = try? JSONSerialization
                 .jsonObject(with: theData, options:JSONSerialization.ReadingOptions(rawValue: 0)),
-            let jsonDictionary = json as? NSDictionary,
-            let data = jsonDictionary.object(forKey: "data") as? NSDictionary,
-            let results = data.object(forKey: "results") as? [[String : Any]],
-            let offset = data.object(forKey: "offset") as? Int,
-            let count = data.object(forKey: "count") as? Int,
-            let total = data.object(forKey: "total") as? Int else {
+            let jsonRep = json as? [String: Any],
+            let data = jsonRep["data"] as? [String: Any],
+            let results = data["results"] as? [[String : Any]],
+            let offset = data["offset"] as? Int,
+            let count = data["count"] as? Int,
+            let total = data["total"] as? Int else {
                 return nil
         }
     

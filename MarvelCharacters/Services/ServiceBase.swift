@@ -39,7 +39,7 @@ class ServiceBase {
             DispatchQueue.global(qos: .background).async {
                 
                 guard let response = ServiceResponse(data) else {
-                    completionHandler(Result.failure(FetchError.invalidJSONData))
+                    completionHandler(Result.failure(FetchError.invalidJSON))
                     return
                 }
 

@@ -9,7 +9,7 @@
 import Foundation
 
 enum FetchError: Error {
-    case invalidJSONData
+    case invalidJSON
     case networkFailed
     case limite
 }

@@ -16,18 +16,15 @@ class ServiceBase {
     init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
-    
-    var characters: URL {
-        guard let url = URL(string: "\(Servies.base)characters?\(getParams())&offset=\(offset)") else {
-            fatalError("Invalid characters url")
-        }
         
-        return url
-    }
-    
-    func fetch<T: Representable>(listOf representable: T.Type,
-                         withURL url: URL,
+    internal func fetch<T: Representable>(listOf representable: T.Type,
+                         withURL url: URL?,
                          completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
+        
+        guard let url = url else {
+            completionHandler(Result.failure(FetchError.invalidURL))
+            return
+        }
         
         if offset != 0 && offset == total {
             completionHandler(Result.failure(FetchError.limite))
@@ -62,13 +59,13 @@ class ServiceBase {
         task.resume()
     }
     
-    private func getParams () -> String {
+    internal func getParams () -> String {
         let authentication = "\(timestamp())\(Keys.privateKey)\(Keys.publicKey)".md5()
         return "\(ServiceParameters.timestamp)=\(timestamp())&\(ServiceParameters.apiKey)=" +
         "\(Keys.apikey)&\(ServiceParameters.hash)=\(authentication)"
     }
     
-    private func timestamp() -> String {
+    internal func timestamp() -> String {
         return String(format:"%.0f", NSDate().timeIntervalSince1970)
     }
 }

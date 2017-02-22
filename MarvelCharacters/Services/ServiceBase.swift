@@ -31,7 +31,7 @@ class ServiceBase {
             return
         }
         
-        let task = session.dataTask(with: url) { (data, _, _) -> Void in
+        let task = session.data(with: url) { (data, _, _) -> Void in
             
             DispatchQueue.global(qos: .background).async {
                 

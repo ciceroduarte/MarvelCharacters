@@ -17,7 +17,7 @@ class MockURLSession: URLSessionProtocol {
     var nextData: Data?
     var nextError: FetchError?
     
-    func dataTask(with url: URL, completionHandler: DataTaskResult) -> URLSessionDataTaskProtocol {
+    func data(with url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
         lastURL = url
         completionHandler(nextData, nextResponse, nextError)
         return nextDataTask

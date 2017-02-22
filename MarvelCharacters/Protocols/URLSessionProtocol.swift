@@ -11,11 +11,13 @@ import Foundation
 typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Swift.Void
 
 protocol URLSessionProtocol {
-    func dataTask(with url: URL, completionHandler: DataTaskResult) -> URLSessionDataTaskProtocol
+//    func dataTask(with url: URL, completionHandler: DataTaskResult) -> URLSessionDataTaskProtocol
+    func data(with url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
+
 }
 
 extension URLSession: URLSessionProtocol {
-    internal func dataTask(with url: URL, completionHandler: DataTaskResult) -> URLSessionDataTaskProtocol {
-        return dataTask(with: url, completionHandler: completionHandler) as URLSessionDataTaskProtocol
+    internal func data(with url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
+        return dataTask(with: url, completionHandler: completionHandler)
     }
 }

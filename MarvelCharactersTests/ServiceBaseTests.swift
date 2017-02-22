@@ -104,8 +104,4 @@ class ServiceBaseTests: XCTestCase {
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
-    
-    func testURLNotNil() {
-        XCTAssertNotNil(sut.characters)
-    }
 }

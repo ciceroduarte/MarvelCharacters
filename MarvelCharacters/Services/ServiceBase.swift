@@ -25,7 +25,7 @@ class ServiceBase {
         return url
     }
     
-    internal func search<T: Representable>(for representable: T.Type,
+    func fetch<T: Representable>(listOf representable: T.Type,
                          withURL url: URL,
                          completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
         
@@ -36,33 +36,28 @@ class ServiceBase {
         
         let task = session.dataTask(with: url) { (data, _, _) -> Void in
             
-            guard let theData = data,
-                let json = try? JSONSerialization
-                    .jsonObject(with: theData, options:JSONSerialization.ReadingOptions(rawValue: 0)),
-                let jsonDictionary = json as? NSDictionary,
-                let data = jsonDictionary.object(forKey: "data") as? NSDictionary,
-                let results = data.object(forKey: "results") as? [[String : Any]],
-                let offset = data.object(forKey: "offset") as? Int,
-                let count = data.object(forKey: "count") as? Int,
-                let total = data.object(forKey: "total") as? Int else {
-                    
+            DispatchQueue.global(qos: .background).async {
+                
+                guard let response = ServiceResponse(data) else {
                     completionHandler(Result.failure(FetchError.invalidJSONData))
                     return
-            }
-            
-            self.offset = offset + count
-            self.total = total
-            
-            var resultList = [T]()
-            results.forEach({ result in
-                if let r = T(withRepresentation: result) {
-                    resultList.append(r)
                 }
-            })
 
-            DispatchQueue.main.async {
-                completionHandler(Result.success(resultList))
+                self.offset = response.offset + response.count
+                self.total = response.total
+                
+                var resultList = [T]()
+                response.results.forEach({ result in
+                    if let r = T(withRepresentation: result) {
+                        resultList.append(r)
+                    }
+                })
+                
+                DispatchQueue.main.sync {
+                    completionHandler(Result.success(resultList))
+                }
             }
+
         }
         task.resume()
     }

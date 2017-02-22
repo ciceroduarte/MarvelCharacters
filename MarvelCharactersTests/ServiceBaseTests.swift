@@ -23,7 +23,7 @@ class ServiceBaseTests: XCTestCase {
     }
     
     func testRequestURL() {
-        sut.search(for: Character.self, withURL: url) { (_) in }
+        sut.fetch(listOf: Character.self, withURL: url) { (_) in }
         
         XCTAssert(session.lastURL == url)
     }
@@ -32,13 +32,13 @@ class ServiceBaseTests: XCTestCase {
         let dataTask = MockURLSessionDataTask()
         session.nextDataTask = dataTask
         
-        sut.search(for: Character.self, withURL: url) { (_) in }
+        sut.fetch(listOf: Character.self, withURL: url) { (_) in }
         
         XCTAssert(dataTask.resumeWasCalled)
     }
     
     func testResponseDataReturnsError() {
-        sut.search(for: Character.self, withURL: url) { (response) in
+        sut.fetch(listOf: Character.self, withURL: url) { (response) in
             switch response {
             case .success(let characters):
                 XCTAssertNil(characters)
@@ -51,7 +51,7 @@ class ServiceBaseTests: XCTestCase {
     func testResponseLimiteFetch() {
         sut.offset = 10
         sut.total = 10
-        sut.search(for: Character.self, withURL: url) { (response) in
+        sut.fetch(listOf: Character.self, withURL: url) { (response) in
             switch response {
             case .success(let characters):
                 XCTAssertNil(characters)
@@ -70,8 +70,7 @@ class ServiceBaseTests: XCTestCase {
             "\"thumbnail\":{ \"path\": \"http://www.google.com.br\", \"extension\": \"png\" } }]}}"
             ).data(using: String.Encoding.utf8)
         session.nextData = expectedData
-        sut.search(for: Character.self, withURL: url) { (response) in
-            print("RESPONSE ::: \(response)")
+        sut.fetch(listOf: Character.self, withURL: url) { (response) in
             switch response {
             case .success(let characters):
                 XCTAssertEqual(characters.count, 0)
@@ -93,7 +92,7 @@ class ServiceBaseTests: XCTestCase {
         "\"thumbnail\":{ \"path\": \"http://www.google.com.br\", \"extension\": \"png\"} }]}}"
             ).data(using: String.Encoding.utf8)
         session.nextData = expectedData
-        sut.search(for: Character.self, withURL: url) { (response) in
+        sut.fetch(listOf: Character.self, withURL: url) { (response) in
             switch response {
             case .success(let characters):
                 XCTAssertNotNil(characters)

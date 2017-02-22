@@ -31,6 +31,7 @@
 		F465E8321E5A216400F5CA4B /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465E8311E5A216400F5CA4B /* MockURLSessionDataTask.swift */; };
 		F465E8351E5A58B400F5CA4B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465E8341E5A58B400F5CA4B /* StringExtension.swift */; };
 		F465E8371E5A629E00F5CA4B /* ServiceBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465E8361E5A629E00F5CA4B /* ServiceBaseTests.swift */; };
+		F47A4BAE1E5E321000A7B551 /* ServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A4BAD1E5E321000A7B551 /* ServiceResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		F465E8331E5A575300F5CA4B /* MarvelCharacters-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarvelCharacters-Bridging-Header.h"; sourceTree = "<group>"; };
 		F465E8341E5A58B400F5CA4B /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		F465E8361E5A629E00F5CA4B /* ServiceBaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceBaseTests.swift; sourceTree = "<group>"; };
+		F47A4BAD1E5E321000A7B551 /* ServiceResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceResponse.swift; path = ../Models/ServiceResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		F427ED401E566167008B72D7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F47A4BAD1E5E321000A7B551 /* ServiceResponse.swift */,
 				F42457FE1E57B8BF00EEDCF6 /* ServiceBase.swift */,
 			);
 			path = Services;
@@ -576,6 +579,7 @@
 				F42458011E57B96B00EEDCF6 /* Constants.swift in Sources */,
 				F427ED521E567447008B72D7 /* Representable.swift in Sources */,
 				F465E8351E5A58B400F5CA4B /* StringExtension.swift in Sources */,
+				F47A4BAE1E5E321000A7B551 /* ServiceResponse.swift in Sources */,
 				F465E8301E5A20D700F5CA4B /* URLSessionDataTaskProtocol.swift in Sources */,
 				F42458051E57BA2700EEDCF6 /* FetchError.swift in Sources */,
 				F42458031E57BA0200EEDCF6 /* Result.swift in Sources */,

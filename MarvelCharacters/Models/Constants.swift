@@ -13,9 +13,10 @@ struct Layout {
 }
 
 struct Keys {
-    static let privateKey: String = "!!!PRIVATE KEY!!!"
-    static let publicKey: String = "!!!PUBLIC KEY!!!"
-    static let apikey: String = "!!!API KEY!!!"
+    
+    static let privateKey: String = "2dc5a57020809d6acff539ab7c46d2394dfc3277"
+    static let publicKey: String = "bb2a90b54d60d4eae7c9b5b33d803a4a"
+    static let apikey: String = "bb2a90b54d60d4eae7c9b5b33d803a4a"
 }
 
 struct Servies {

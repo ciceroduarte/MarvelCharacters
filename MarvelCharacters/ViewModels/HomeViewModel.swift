@@ -39,9 +39,9 @@ class HomeViewModel {
         return CharacterCellViewModel(withCharacter: charactersList[indexPath.row])
     }
     
-//    func detailViewModel(for indexPath: IndexPath) -> DetailViewModel {
-//        return DetailViewModel(withCharacter: charactersList[indexPath.row])
-//    }
+    func detailViewModel(for indexPath: IndexPath) -> DetailViewModel {
+        return DetailViewModel(withCharacter: charactersList[indexPath.row])
+    }
     
     func numberOfCharacters () -> Int {
         return charactersList.count

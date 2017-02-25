@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+    let navigationDelegate = NavigationDelegate()
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.barTintColor = .black
         navigationController.navigationBar.tintColor = .white
+        navigationController.delegate = navigationDelegate
         
         window?.makeKeyAndVisible()
         window?.rootViewController = navigationController

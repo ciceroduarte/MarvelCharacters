@@ -11,7 +11,6 @@ import Foundation
 typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Swift.Void
 
 protocol URLSessionProtocol {
-//    func dataTask(with url: URL, completionHandler: DataTaskResult) -> URLSessionDataTaskProtocol
     func data(with url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
 
 }

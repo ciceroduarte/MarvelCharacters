@@ -24,6 +24,10 @@ class HomeViewController: UICollectionViewController, HomeViewModelDelegate, Dyn
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let _ = navigationController?.delegate as? NavigationDelegate else {
+            fatalError("Invalide navigation delegate!")
+        }
+        
         navigationItem.title = "MARVEL"
         
         collectionView?.backgroundColor = .white

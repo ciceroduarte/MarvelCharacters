@@ -11,14 +11,12 @@ import SnapKit
 import Kingfisher
 
 class CharacterCell: UICollectionViewCell, Reusable {
-    
-    private let characterName = UILabel()
-    private let characterImage = UIImageView()
-    private let imageHeight: CGFloat = 145.0
+
+    private let characterView = CharacterView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubviews(views: [characterName, characterImage])
+        self.contentView.addSubviews(views: [characterView])
         setupViews()
         setupConstraints()
     }
@@ -28,42 +26,20 @@ class CharacterCell: UICollectionViewCell, Reusable {
     }
     
     func height(forWidth width: CGFloat) -> CGFloat {
-        let marginCount = CGFloat(Layout.margin * 3)
-        return CGFloat(marginCount + characterName.height(forWidth: width - CGFloat(Layout.margin * 2)) + imageHeight)
+        return characterView.height(forWidth: width)
     }
     
     func setupViews() {
-        characterName.font = UIFont.boldSystemFont(ofSize: 16)
-        characterName.numberOfLines = 0
-        characterName.textAlignment = .center
-        characterName.textColor = .black
-        
-        characterImage.layer.cornerRadius = imageHeight / 2.0
-        characterImage.layer.borderWidth = 0.6
-        characterImage.layer.borderColor = UIColor.black.cgColor
-        characterImage.clipsToBounds = true
-        characterImage.backgroundColor = .white
         backgroundColor = .clear
     }
     
     func setupConstraints() {
-        
-        characterImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(Layout.margin)
-            make.centerX.equalToSuperview()
-            make.height.width.equalTo(imageHeight)
-        }
-        
-        characterName.snp.makeConstraints { make in
-            make.top.equalTo(characterImage.snp.bottom).offset(Layout.margin)
-            make.left.equalToSuperview().offset(Layout.margin)
-            make.right.equalToSuperview().inset(Layout.margin)
-            make.bottom.lessThanOrEqualToSuperview().inset(Layout.margin)
+        characterView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
     func config(withViewModel viewModel: CharacterCellViewModel) {
-        characterName.text = viewModel.characterName()
-        characterImage.kf.setImage(with: viewModel.characterImage())
+        characterView.config(withViewModel: viewModel)
     }
 }

@@ -182,9 +182,9 @@
 		F427ED401E566167008B72D7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				F47A4BAD1E5E321000A7B551 /* ServiceResponse.swift */,
 				F42457FE1E57B8BF00EEDCF6 /* ServiceBase.swift */,
 				F47A4BBF1E5E41BD00A7B551 /* CharactersService.swift */,
+				F47A4BAD1E5E321000A7B551 /* ServiceResponse.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

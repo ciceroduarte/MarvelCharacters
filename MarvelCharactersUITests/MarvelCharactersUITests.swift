@@ -21,9 +21,31 @@ class MarvelCharactersUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCharacterList() {
+        
+        let app = XCUIApplication()
+        app.collectionViews.cells.otherElements
+            .containing(.staticText, identifier:"3-D Man")
+            .children(matching: .image)
+            .element
+            .tap()
+        
+        app.navigationBars["MarvelCharacters.DetailView"]
+            .buttons["Back"]
+            .tap()
+        
+        let collectionView = app.otherElements
+            .containing(.navigationBar, identifier:"MARVEL")
+            .children(matching: .other)
+            .element
+            .children(matching: .other)
+            .element
+            .children(matching: .other)
+            .element
+            .children(matching: .collectionView)
+            .element
+        
+        collectionView.swipeUp()
+        collectionView.swipeDown()
     }
-    
 }

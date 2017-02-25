@@ -60,7 +60,7 @@ class CharacterTests: XCTestCase {
     
     func testNameDescriptionAndThumbnail() {
         let character = Character(withRepresentation: representation())
-        let url = URL(string: "http://www.google.com.br/standard_large.png")
+        let url = URL(string: "http://www.google.com.br/standard_amazing.png")
         
         XCTAssertTrue(character?.name == "cicero")
         XCTAssertTrue(character?.characterDescription == "description")

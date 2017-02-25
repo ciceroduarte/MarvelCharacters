@@ -12,9 +12,7 @@ class CharactersService: ServiceBase {
     
     func fetch (completionHandler: @escaping (Result<[Character], FetchError>) -> Void) {
         
-        let url = URL(string: "\(Servies.base)characters?\(getParams())&offset=\(offset)")
-        
-        fetch(listOf: Character.self, withURL: url) { (result) in
+        fetch(listOf: Character.self, withURL: url(withPath: "characters")) { (result) in
             switch result {
             case .success(let characters):
                 completionHandler(Result.success(characters))
@@ -22,6 +20,5 @@ class CharactersService: ServiceBase {
                 completionHandler(Result.failure(error))
             }
         }
-        
     }
 }

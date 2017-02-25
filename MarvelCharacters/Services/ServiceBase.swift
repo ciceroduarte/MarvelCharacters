@@ -13,10 +13,23 @@ class ServiceBase {
     lazy var total = 0
     private let session: URLSessionProtocol
     
+    internal var parameters: String {
+        let authentication = (timestamp() + Keys.privateKey + Keys.publicKey).md5()
+        return ServiceParameters.timestamp + "=" + timestamp() + "&"
+            + ServiceParameters.apiKey + "=" + Keys.apikey + "&"
+            + ServiceParameters.hash + "=" + authentication
+    }
+    
     init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
-        
+    
+    internal func url(withPath path: String) -> URL? {
+        return URL(string: Servies.base + path + "?"
+            + parameters + "&"
+            + ServiceParameters.offset + "=" + String(stringInterpolationSegment: offset))
+    }
+    
     internal func fetch<T: Representable>(listOf representable: T.Type,
                          withURL url: URL?,
                          completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
@@ -57,12 +70,6 @@ class ServiceBase {
 
         }
         task.resume()
-    }
-    
-    internal func getParams () -> String {
-        let authentication = "\(timestamp())\(Keys.privateKey)\(Keys.publicKey)".md5()
-        return "\(ServiceParameters.timestamp)=\(timestamp())&\(ServiceParameters.apiKey)=" +
-        "\(Keys.apikey)&\(ServiceParameters.hash)=\(authentication)"
     }
     
     internal func timestamp() -> String {

@@ -20,10 +20,6 @@ class DetailViewController: UIViewController {
         return detailView
     }
     
-    deinit {
-        print("deinit DetailViewController")
-    }
-    
     init(withViewModel detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
         super.init(nibName: nil, bundle: nil)

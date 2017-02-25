@@ -46,6 +46,7 @@
 		F48A4A351E60F246006E3D2F /* ServiceBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A4A321E60F246006E3D2F /* ServiceBaseTests.swift */; };
 		F4EC84BF1E622CE7006DFFF7 /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC84BE1E622CE7006DFFF7 /* NavigationDelegate.swift */; };
 		F4EC84C11E622D62006DFFF7 /* TransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC84C01E622D62006DFFF7 /* TransitionController.swift */; };
+		F4EC84C31E62424B006DFFF7 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC84C21E62424B006DFFF7 /* CharacterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		F48A4A321E60F246006E3D2F /* ServiceBaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceBaseTests.swift; path = Services/ServiceBaseTests.swift; sourceTree = "<group>"; };
 		F4EC84BE1E622CE7006DFFF7 /* NavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		F4EC84C01E622D62006DFFF7 /* TransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionController.swift; sourceTree = "<group>"; };
+		F4EC84C21E62424B006DFFF7 /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 				F48A4A281E60EF04006E3D2F /* DetailView.swift */,
 				F47A4BB71E5E3E5900A7B551 /* CharacterCell.swift */,
 				F47A4BB51E5E3DDA00A7B551 /* DinamicHeightLayout.swift */,
+				F4EC84C21E62424B006DFFF7 /* CharacterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				F427ED501E567438008B72D7 /* Character.swift in Sources */,
 				F47A4BC01E5E41BD00A7B551 /* CharactersService.swift in Sources */,
 				F48A4A291E60EF04006E3D2F /* DetailView.swift in Sources */,
+				F4EC84C31E62424B006DFFF7 /* CharacterView.swift in Sources */,
 				F48A4A2B1E60EF7A006E3D2F /* DetailViewModel.swift in Sources */,
 				F42457FF1E57B8BF00EEDCF6 /* ServiceBase.swift in Sources */,
 				F47A4BBA1E5E3EB800A7B551 /* UIViewExtension.swift in Sources */,

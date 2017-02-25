@@ -44,6 +44,8 @@
 		F48A4A331E60F246006E3D2F /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A4A301E60F246006E3D2F /* MockURLSession.swift */; };
 		F48A4A341E60F246006E3D2F /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A4A311E60F246006E3D2F /* MockURLSessionDataTask.swift */; };
 		F48A4A351E60F246006E3D2F /* ServiceBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A4A321E60F246006E3D2F /* ServiceBaseTests.swift */; };
+		F4EC84BF1E622CE7006DFFF7 /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC84BE1E622CE7006DFFF7 /* NavigationDelegate.swift */; };
+		F4EC84C11E622D62006DFFF7 /* TransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC84C01E622D62006DFFF7 /* TransitionController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		F48A4A301E60F246006E3D2F /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockURLSession.swift; path = Services/MockURLSession.swift; sourceTree = "<group>"; };
 		F48A4A311E60F246006E3D2F /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockURLSessionDataTask.swift; path = Services/MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		F48A4A321E60F246006E3D2F /* ServiceBaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceBaseTests.swift; path = Services/ServiceBaseTests.swift; sourceTree = "<group>"; };
+		F4EC84BE1E622CE7006DFFF7 /* NavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
+		F4EC84C01E622D62006DFFF7 /* TransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,8 @@
 				F42458001E57B96B00EEDCF6 /* Constants.swift */,
 				F42458021E57BA0200EEDCF6 /* Result.swift */,
 				F42458041E57BA2700EEDCF6 /* FetchError.swift */,
+				F4EC84BE1E622CE7006DFFF7 /* NavigationDelegate.swift */,
+				F4EC84C01E622D62006DFFF7 /* TransitionController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -626,6 +632,7 @@
 				F465E8261E59F37000F5CA4B /* URLSessionProtocol.swift in Sources */,
 				F45DD3901E55180600ABFFBA /* HomeViewController.swift in Sources */,
 				F47A4BBE1E5E40DA00A7B551 /* HomeViewModel.swift in Sources */,
+				F4EC84C11E622D62006DFFF7 /* TransitionController.swift in Sources */,
 				F47A4BBC1E5E3ED700A7B551 /* UILabelExtension.swift in Sources */,
 				F47A4BB01E5E3C8900A7B551 /* UICollectionViewExtension.swift in Sources */,
 				F427ED501E567438008B72D7 /* Character.swift in Sources */,
@@ -644,6 +651,7 @@
 				F47A4BAE1E5E321000A7B551 /* ServiceResponse.swift in Sources */,
 				F47A4BB81E5E3E5900A7B551 /* CharacterCell.swift in Sources */,
 				F465E8301E5A20D700F5CA4B /* URLSessionDataTaskProtocol.swift in Sources */,
+				F4EC84BF1E622CE7006DFFF7 /* NavigationDelegate.swift in Sources */,
 				F47A4BC21E5E433B00A7B551 /* CharacterCellViewModel.swift in Sources */,
 				F42458051E57BA2700EEDCF6 /* FetchError.swift in Sources */,
 				F42458031E57BA0200EEDCF6 /* Result.swift in Sources */,

@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     
     var contentView: DetailView {
         guard let detailView = view as? DetailView else {
-            fatalError("")
+            fatalError("Invalid DetailView")
         }
         return detailView
     }
@@ -39,6 +39,9 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let barButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
         
         contentView.name.text = detailViewModel.characterName()
         contentView.image.kf.setImage(with: detailViewModel.characterImage())

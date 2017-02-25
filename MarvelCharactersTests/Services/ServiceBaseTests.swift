@@ -104,4 +104,15 @@ class ServiceBaseTests: XCTestCase {
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
+    
+    func testInvalidURL() {
+        
+        sut.fetch(listOf: Character.self, withURL: nil) { (response) in
+            switch response {
+            case .failure(let error):
+                XCTAssertEqual(error, FetchError.invalidURL)
+            default: break
+            }
+        }
+    }
 }

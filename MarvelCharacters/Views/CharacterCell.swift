@@ -14,7 +14,7 @@ class CharacterCell: UICollectionViewCell, Reusable {
     
     private let characterName = UILabel()
     private let characterImage = UIImageView()
-    private let imageHeight: CGFloat = 130.0
+    private let imageHeight: CGFloat = 145.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,14 +33,14 @@ class CharacterCell: UICollectionViewCell, Reusable {
     }
     
     func setupViews() {
-        characterName.font = UIFont.boldSystemFont(ofSize: 18)
+        characterName.font = UIFont.boldSystemFont(ofSize: 16)
         characterName.numberOfLines = 0
         characterName.textAlignment = .center
-        characterName.textColor = .white
+        characterName.textColor = .black
         
         characterImage.layer.cornerRadius = imageHeight / 2.0
-//        characterImage.layer.borderWidth = 0.8
-//        characterImage.layer.borderColor = UIColor.black.cgColor
+        characterImage.layer.borderWidth = 0.6
+        characterImage.layer.borderColor = UIColor.black.cgColor
         characterImage.clipsToBounds = true
         characterImage.backgroundColor = .white
         backgroundColor = .clear

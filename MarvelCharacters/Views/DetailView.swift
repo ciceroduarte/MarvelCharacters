@@ -42,7 +42,7 @@ class DetailView: UIView {
         name.numberOfLines = 0
         name.textColor = .white
         
-        image.backgroundColor = .red
+        image.backgroundColor = .white
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
     }

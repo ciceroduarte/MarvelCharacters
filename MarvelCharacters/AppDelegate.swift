@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeViewController = HomeViewController(withHomeViewModel: HomeViewModel())
         let navigationController = UINavigationController(rootViewController: homeViewController)
         navigationController.navigationBar.isTranslucent = false
-        navigationController.hidesBarsOnSwipe = true
-        navigationController.navigationBar.barTintColor = .red
+        navigationController.navigationBar.barTintColor = .black
         navigationController.navigationBar.tintColor = .white
         
         window?.makeKeyAndVisible()

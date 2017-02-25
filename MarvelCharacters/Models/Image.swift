@@ -25,6 +25,6 @@ struct Image {
     }
     
     var url: URL? {
-        return URL(string: "\(path)/standard_large.\(imageExtension)")
+        return URL(string: path + "/standard_amazing." + imageExtension)
     }
 }

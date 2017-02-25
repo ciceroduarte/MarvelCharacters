@@ -36,8 +36,6 @@ class HomeViewController: UICollectionViewController, HomeViewModelDelegate, Dyn
             layout.delegate = self
         }
         
-        self.collectionView?.backgroundColor = .red
-        
         homeViewModel.viewDelegate = self
         homeViewModel.loadCharacters()
     }
@@ -46,14 +44,15 @@ class HomeViewController: UICollectionViewController, HomeViewModelDelegate, Dyn
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: HomeViewModelDelegate
     internal func charactersDidChange() {
         collectionView?.finishInfiniteScroll()
         self.collectionView?.reloadData()
     }
     
     // MARK: UICollectionViewDataSource
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
         return homeViewModel.numberOfCharacters()
     }
     
@@ -65,15 +64,15 @@ class HomeViewController: UICollectionViewController, HomeViewModelDelegate, Dyn
     }
     
     // MARK: UICollectionViewDelegate
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        navigationController?.setNavigationBarHidden(false, animated: true)
-//        let detailViewController = DetailViewController(withViewModel: 
-        //homeViewModel.detailViewModel(forIndexPath: indexPath))
-//        navigationController?.pushViewController(detailViewController, animated: true)
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        let detailViewController = DetailViewController(withViewModel: 
+        homeViewModel.detailViewModel(for: indexPath))
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     // MARK: DynamicHeightLayoutDelegate
-    
     func collectionView(collectionView: UICollectionView,
                         heightForItemAtIndexPath indexPath: IndexPath,
                         withWidth width: CGFloat) -> CGFloat {

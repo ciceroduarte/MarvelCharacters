@@ -46,6 +46,8 @@ class MarvelCharactersUITests: XCTestCase {
             .element
         
         collectionView.swipeUp()
-        collectionView.swipeDown()
+        collectionView.swipeUp()
+        collectionView.swipeUp()
+        collectionView.swipeUp()
     }
 }

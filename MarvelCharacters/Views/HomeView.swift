@@ -11,10 +11,12 @@ import UIKit
 class HomeView: UIView {
     
     let collectionView: UICollectionView
+    let loadingView: LoadingView
     
     init() {
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: DynamicHeightLayout())
-
+        loadingView = LoadingView()
+        
         super.init(frame: CGRect.zero)
         setupViews()
         setupConstraints()
@@ -25,7 +27,7 @@ class HomeView: UIView {
     }
     
     func setupViews() {
-        addSubview(collectionView)
+        addSubviews(views: [collectionView, loadingView])
         
         collectionView.backgroundColor = .white
     }
@@ -33,6 +35,10 @@ class HomeView: UIView {
     func setupConstraints() {
         
         collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        loadingView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }

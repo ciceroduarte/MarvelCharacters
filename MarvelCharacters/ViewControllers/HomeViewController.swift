@@ -63,7 +63,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: HomeViewModelDelegate
     internal func charactersDidChange() {
-        
+        contentView.loadingView.isHidden = true
         contentView.collectionView.finishInfiniteScroll()
         contentView.collectionView.reloadData()
     }

@@ -10,14 +10,12 @@ import UIKit
 
 class DetailView: UIView {
     
-    let scrollView: UIScrollView
     let characterView: CharacterView
-    let contentView: UIView
+    let loadingView: LoadingView
     
     init() {
         characterView = CharacterView(frame: CGRect.zero)
-        scrollView = UIScrollView()
-        contentView = UIView()
+        loadingView = LoadingView()
 
         super.init(frame: CGRect.zero)
         setupViews()
@@ -29,33 +27,23 @@ class DetailView: UIView {
     }
     
     func setupViews() {
-        addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.addSubview(characterView)
+        addSubviews(views: [characterView, loadingView])
         
         backgroundColor = .white
-        
     }
     
     func setupConstraints() {
         
         let characterViewHeight = characterView.height(forWidth: characterView.superview?.frame.width ?? 150.0)
         
-        scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        contentView.snp.makeConstraints { make in
-            make.edges.width.equalToSuperview()
-        }
-        
         characterView.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
             make.height.equalTo(characterViewHeight)
         }
         
-        contentView.snp.makeConstraints { make in
-            make.bottom.equalTo(characterView.snp.bottom)
+        loadingView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(characterView.snp.bottom)
         }
     }
 }

@@ -15,7 +15,7 @@ class ServiceBase {
     
     internal var parameters: String {
         let authentication = (timestamp() + Keys.privateKey + Keys.publicKey).md5()
-        return ServiceParameters.timestamp + "=" + timestamp() + "&"
+        return "?" + ServiceParameters.timestamp + "=" + timestamp() + "&"
             + ServiceParameters.apiKey + "=" + Keys.apikey + "&"
             + ServiceParameters.hash + "=" + authentication
     }
@@ -24,8 +24,12 @@ class ServiceBase {
         self.session = session
     }
     
+    func getParameters() -> String {
+        return parameters
+    }
+    
     internal func url(withPath path: String) -> URL? {
-        return URL(string: Servies.base + path + "?"
+        return URL(string: Servies.base + path
             + parameters + "&"
             + ServiceParameters.offset + "=" + String(stringInterpolationSegment: offset))
     }

@@ -29,10 +29,8 @@ class MarvelCharactersUITests: XCTestCase {
             .children(matching: .image)
             .element
             .tap()
-        
-        app.navigationBars["MarvelCharacters.DetailView"]
-            .buttons["Back"]
-            .tap()
+
+        app.navigationBars["3-D Man"].buttons["Back"].tap()
         
         let collectionView = app.otherElements
             .containing(.navigationBar, identifier:"MARVEL")

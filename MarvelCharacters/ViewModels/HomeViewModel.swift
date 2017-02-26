@@ -23,7 +23,6 @@ class HomeViewModel {
         }
     }
     
-    // MARK: Private methods
     func loadCharacters () {
         charactersService.fetch { [weak self] result in
             switch result {
@@ -34,7 +33,6 @@ class HomeViewModel {
         }
     }
     
-    // MARK: Public methods
     func characterCellViewModel(at indexPath: IndexPath) -> CharacterCellViewModel {
         return CharacterCellViewModel(withCharacter: charactersList[indexPath.row])
     }

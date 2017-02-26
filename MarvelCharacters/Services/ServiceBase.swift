@@ -67,7 +67,6 @@ class ServiceBase {
                     completionHandler(Result.success(resultList))
                 }
             }
-
         }
         task.resume()
     }

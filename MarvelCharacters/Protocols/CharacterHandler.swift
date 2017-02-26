@@ -19,6 +19,6 @@ extension CharacterHandler {
     }
     
     func characterImage () -> URL? {
-        return character.image?.url
+        return character.image.url
     }
 }

@@ -11,17 +11,14 @@ import UIKit
 class DetailView: UIView {
     
     let scrollView: UIScrollView
+    let characterView: CharacterView
     let contentView: UIView
-    let image: UIImageView
-    let name: UILabel
     
     init() {
+        characterView = CharacterView(frame: CGRect.zero)
         scrollView = UIScrollView()
         contentView = UIView()
-        
-        image = UIImageView()
-        name = UILabel()
-        
+
         super.init(frame: CGRect.zero)
         setupViews()
         setupConstraints()
@@ -34,20 +31,15 @@ class DetailView: UIView {
     func setupViews() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(image)
-        contentView.addSubview(name)
+        contentView.addSubview(characterView)
         
-        self.backgroundColor = .red
+        backgroundColor = .white
         
-        name.numberOfLines = 0
-        name.textColor = .white
-        
-        image.backgroundColor = .white
-        image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
     }
     
     func setupConstraints() {
+        
+        let characterViewHeight = characterView.height(forWidth: characterView.superview?.frame.width ?? 150.0)
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -57,18 +49,13 @@ class DetailView: UIView {
             make.edges.width.equalToSuperview()
         }
         
-        image.snp.makeConstraints { make in
+        characterView.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
-            make.height.equalTo(150)
-        }
-        
-        name.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(Layout.margin)
-            make.top.equalTo(image.snp.bottom).offset(Layout.margin)
+            make.height.equalTo(characterViewHeight)
         }
         
         contentView.snp.makeConstraints { make in
-            make.bottom.equalTo(name.snp.bottom)
+            make.bottom.equalTo(characterView.snp.bottom)
         }
     }
 }

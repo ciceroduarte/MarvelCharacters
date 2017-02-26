@@ -10,12 +10,16 @@ import Foundation
 
 class CharacterView: UIView {
     
-    private let name = UILabel()
-    private let image = UIImageView()
+    let name = UILabel()
+    let image = UIImageView()
     private let imageHeight: CGFloat = 145.0
     
-    init() {
-        super.init(frame: CGRect.zero)
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.addSubviews(views: [name, image])
         setupViews()
         setupConstraints()

@@ -12,7 +12,7 @@ import Kingfisher
 
 class CharacterCell: UICollectionViewCell, Reusable {
 
-    private let characterView = CharacterView()
+    let characterView = CharacterView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

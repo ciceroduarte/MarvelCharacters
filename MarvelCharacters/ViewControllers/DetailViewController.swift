@@ -39,7 +39,8 @@ class DetailViewController: UIViewController {
         let barButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
         
-        contentView.name.text = detailViewModel.characterName()
-        contentView.image.kf.setImage(with: detailViewModel.characterImage())
+        let characterView = contentView.characterView
+        navigationItem.title = detailViewModel.characterName()
+        characterView.image.kf.setImage(with: detailViewModel.characterImage())
     }
 }

@@ -13,8 +13,10 @@ struct Character: Representable {
     let name: String
     let characterDescription: String
     let comicsCollectionURI: URL
+    let seriesCollectionURL: URL
     let image: Image
     var comics: [Comic]?
+    var series: [Serie]?
     
     init? (withRepresentation representation: [String: Any]?) {
         
@@ -24,13 +26,17 @@ struct Character: Representable {
             let image = Image(withRepresentation: imageRepresentation),
             let comicsRepresentation = representation?["comics"] as? [String: Any],
             let comicsCollectionURIString = comicsRepresentation["collectionURI"] as? String,
-            let comicsCollectionURI = URL(string: comicsCollectionURIString) else {
+            let comicsCollectionURI = URL(string: comicsCollectionURIString),
+            let seriesRepresentation = representation?["series"] as? [String: Any],
+            let seriesCollectionURIString = seriesRepresentation["collectionURI"] as? String,
+            let seriesCollectionURI = URL(string: seriesCollectionURIString) else {
                 return nil
         }
         
         self.name = name
         self.characterDescription = characterDescription
         self.comicsCollectionURI = comicsCollectionURI
+        self.seriesCollectionURL = seriesCollectionURI
         self.image = image
     }
 }

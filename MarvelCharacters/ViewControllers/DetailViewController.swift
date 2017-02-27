@@ -47,28 +47,54 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDel
         contentView.collectionView.delegate = self
         
         contentView.collectionView.register(ComicCell.self)
+        contentView.collectionView.register(SerieCell.self)
         
         let characterView = contentView.characterView
         navigationItem.title = detailViewModel.characterName().uppercased()
         characterView.image.kf.setImage(with: detailViewModel.characterImage())
         
+        contentView.segmentedControl.addTarget(self, action: #selector(segmentedControlerDidChange), for: .valueChanged)
+        
         detailViewModel.fetchComics()
         contentView.showLoading()
+    }
+    
+    func segmentedControlerDidChange(sender: UISegmentedControl) {
+        detailViewModel.cancelServices()
+        contentView.showLoading()
+        
+        if sender.selectedSegmentIndex == 0 {
+            detailViewModel.fetchComics()
+        } else {
+            detailViewModel.fetchSeries()
+        }
     }
     
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return detailViewModel.numberOfComics()
+        
+        let selected = contentView.segmentedControl.selectedSegmentIndex
+        
+        return selected == 0 ? detailViewModel.numberOfComics() : detailViewModel.numberOfSeries()
     }
     
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as ComicCell
-        cell.config(withImage: detailViewModel.comicImageUrl(withIndex: indexPath),
-                    name: detailViewModel.comicTitle(withIndex: indexPath))
-        return cell
         
+        let selected = contentView.segmentedControl.selectedSegmentIndex
+        
+        if selected == 0 {
+            let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as ComicCell
+            cell.config(withImage: detailViewModel.comicImageUrl(withIndex: indexPath),
+                        name: detailViewModel.comicTitle(withIndex: indexPath))
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as SerieCell
+            cell.config(withImage: detailViewModel.serieImageUrl(withIndex: indexPath),
+                        name: detailViewModel.serieTitle(withIndex: indexPath))
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -79,6 +105,11 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDel
         
     // MARK - DetailViewModelDelegate
     func comicsDidChange() {
+        contentView.hideLoading()
+        contentView.collectionView.reloadData()
+    }
+    
+    func seriesDidChange() {
         contentView.hideLoading()
         contentView.collectionView.reloadData()
     }

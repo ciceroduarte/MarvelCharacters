@@ -23,29 +23,22 @@ class MarvelCharactersUITests: XCTestCase {
     
     func testCharacterList() {
         
-        let app = XCUIApplication()
-        app.collectionViews.cells.otherElements
-            .containing(.staticText, identifier:"3-D Man")
-            .children(matching: .image)
-            .element
-            .tap()
-
-        app.navigationBars["3-D Man"].buttons["Back"].tap()
-        
-        let collectionView = app.otherElements
-            .containing(.navigationBar, identifier:"MARVEL")
-            .children(matching: .other)
-            .element
-            .children(matching: .other)
-            .element
-            .children(matching: .other)
-            .element
-            .children(matching: .collectionView)
-            .element
-        
-        collectionView.swipeUp()
-        collectionView.swipeUp()
-        collectionView.swipeUp()
-        collectionView.swipeUp()
+//        let app = XCUIApplication()
+//        
+//        let collectionView = app.otherElements
+//            .containing(.navigationBar, identifier:"MARVEL")
+//            .children(matching: .other)
+//            .element
+//            .children(matching: .other)
+//            .element
+//            .children(matching: .other)
+//            .element
+//            .children(matching: .collectionView)
+//            .element
+//        
+//        collectionView.swipeUp()
+//        collectionView.swipeUp()
+//        collectionView.swipeUp()
+//        collectionView.swipeUp()
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class LoadingView: UIView {
     
-    private let activityIndicatorView: UIActivityIndicatorView
+    let activityIndicatorView: UIActivityIndicatorView
     
     init() {
         
@@ -28,6 +28,7 @@ class LoadingView: UIView {
     func setupViews() {
         addSubview(activityIndicatorView)
         activityIndicatorView.startAnimating()
+        backgroundColor = .white
     }
     
     func setupConstraints() {

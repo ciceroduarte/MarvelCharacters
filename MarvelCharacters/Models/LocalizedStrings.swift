@@ -9,6 +9,6 @@
 import Foundation
 
 struct LocalizedStrings {
-    static let comics: String = NSLocalizedString("Comics", comment: "")
-    static let series: String = NSLocalizedString("Series", comment: "")
+    static let comics: String = NSLocalizedString("COMICS", comment: "")
+    static let series: String = NSLocalizedString("SERIES", comment: "")
 }

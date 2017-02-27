@@ -64,20 +64,20 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func tryAgain() {
-        contentView.tryAgainView.isHidden = true
+        contentView.tryAgainView.hide()
         contentView.loadingView.show()
         homeViewModel.loadCharacters()
     }
     
     // MARK: HomeViewModelDelegate
     internal func charactersDidChange() {
-        contentView.loadingView.isHidden = true
+        contentView.loadingView.hide()
         contentView.collectionView.finishInfiniteScroll()
         contentView.collectionView.reloadData()
     }
     
     func fetchDidFailed() {
-        contentView.tryAgainView.isHidden = false
+        contentView.tryAgainView.show()
         contentView.loadingView.hide()
     }
     

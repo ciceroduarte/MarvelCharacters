@@ -46,4 +46,12 @@ class TryAgainView: UIView {
             make.centerX.centerY.equalToSuperview()
         }
     }
+    
+    func show() {
+        isHidden = false
+    }
+    
+    func hide() {
+        isHidden = true
+    }
 }

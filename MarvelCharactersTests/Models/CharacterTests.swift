@@ -29,6 +29,12 @@ class CharacterTests: XCTestCase {
         let representation = [
             "name": "cicero",
             "description": "description",
+            "comics": [
+                "collectionURI": "http://www.google.com.br"
+            ],
+            "series": [
+                "collectionURI": "http://www.google.com.br"
+            ],
             "thumbnail": [
                 "path": "http://www.google.com.br",
                 "extension": "png"
@@ -61,10 +67,12 @@ class CharacterTests: XCTestCase {
     func testNameDescriptionAndThumbnail() {
         let character = Character(withRepresentation: representation())
         let url = URL(string: "http://www.google.com.br/standard_amazing.png")
+        let portraitUrl = URL(string: "http://www.google.com.br/portrait_fantastic.png")
         
         XCTAssertTrue(character?.name == "cicero")
         XCTAssertTrue(character?.characterDescription == "description")
-        XCTAssertNotNil(character?.image?.url)
-        XCTAssertTrue(character?.image?.url?.absoluteString == url?.absoluteString)
+        XCTAssertNotNil(character?.image.url)
+        XCTAssertTrue(character?.image.url?.absoluteString == url?.absoluteString)
+        XCTAssertTrue(character?.image.portraitUrl?.absoluteString == portraitUrl?.absoluteString)
     }
 }

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,
-    HomeViewModelDelegate, DynamicHeightLayoutDelegate {
+    HomeViewModelDelegate, DynamicHeightLayoutDelegate, DZNEmptyDataSetSource {
     
     let homeViewModel: HomeViewModel
     
@@ -43,6 +44,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         navigationItem.title = "MARVEL"
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
+        contentView.collectionView.emptyDataSetSource = self
         contentView.collectionView.register(CharacterCell.self)
         contentView.collectionView.addInfiniteScroll { [weak self] _ -> Void in
             self?.homeViewModel.loadCharacters()
@@ -68,6 +70,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         contentView.tryAgainView.hide()
         contentView.loadingView.show()
         homeViewModel.loadCharacters()
+    }
+    
+    // MARK: DZNEmptyDataSetSource
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString {
+        return LocalizedStrings.emptyData
     }
     
     // MARK: HomeViewModelDelegate

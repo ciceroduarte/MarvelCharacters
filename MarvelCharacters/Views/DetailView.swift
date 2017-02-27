@@ -11,12 +11,19 @@ import UIKit
 class DetailView: UIView {
     
     let characterView: CharacterView
-    let loadingView: LoadingView
+    private let loadingView: LoadingView
+    let segmentedControl: UISegmentedControl
+    let collectionView: UICollectionView
     
     init() {
         characterView = CharacterView(frame: CGRect.zero)
         loadingView = LoadingView()
-
+        segmentedControl = UISegmentedControl(items: [LocalizedStrings.comics, LocalizedStrings.series])
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        
         super.init(frame: CGRect.zero)
         setupViews()
         setupConstraints()
@@ -27,8 +34,12 @@ class DetailView: UIView {
     }
     
     func setupViews() {
-        addSubviews(views: [characterView, loadingView])
+        addSubviews(views: [characterView, segmentedControl, collectionView, loadingView])
         
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.tintColor = .black
+        
+        collectionView.backgroundColor = .white
         backgroundColor = .white
     }
     
@@ -41,9 +52,31 @@ class DetailView: UIView {
             make.height.equalTo(characterViewHeight)
         }
         
+        segmentedControl.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview().inset(8)
+            make.top.equalTo(characterView.snp.bottom)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(8)
+            make.bottom.equalToSuperview()
+            make.top.equalTo(segmentedControl.snp.bottom).offset(1)
+        }
+        
         loadingView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(characterView.snp.bottom)
         }
+    }
+    
+    func showLoading() {
+        loadingView.isHidden = false
+        loadingView.activityIndicatorView.startAnimating()
+        
+    }
+    
+    func hideLoading() {
+        loadingView.isHidden = true
+        loadingView.activityIndicatorView.stopAnimating()
     }
 }

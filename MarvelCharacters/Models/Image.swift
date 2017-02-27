@@ -27,4 +27,8 @@ struct Image {
     var url: URL? {
         return URL(string: path + "/standard_amazing." + imageExtension)
     }
+    
+    var portraitUrl: URL? {
+        return URL(string: path + "/portrait_fantastic." + imageExtension)
+    }
 }

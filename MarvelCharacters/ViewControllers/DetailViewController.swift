@@ -56,12 +56,12 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDel
         contentView.segmentedControl.addTarget(self, action: #selector(segmentedControlerDidChange), for: .valueChanged)
         
         detailViewModel.fetchComics()
-        contentView.showLoading()
+        contentView.loadingView.show()
     }
     
     func segmentedControlerDidChange(sender: UISegmentedControl) {
         detailViewModel.cancelServices()
-        contentView.showLoading()
+        contentView.loadingView.show()
         
         if sender.selectedSegmentIndex == 0 {
             detailViewModel.fetchComics()
@@ -105,12 +105,16 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDel
         
     // MARK - DetailViewModelDelegate
     func comicsDidChange() {
-        contentView.hideLoading()
+        contentView.loadingView.hide()
         contentView.collectionView.reloadData()
     }
     
     func seriesDidChange() {
-        contentView.hideLoading()
+        contentView.loadingView.hide()
         contentView.collectionView.reloadData()
+    }
+    
+    func fetchDidFailed() {
+        
     }
 }

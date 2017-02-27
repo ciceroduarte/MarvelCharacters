@@ -53,6 +53,7 @@
 		F48A4A351E60F246006E3D2F /* ServiceBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A4A321E60F246006E3D2F /* ServiceBaseTests.swift */; };
 		F4D841001E6482240073D339 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D840FF1E6482240073D339 /* Serie.swift */; };
 		F4D841021E64876F0073D339 /* SerieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D841011E64876F0073D339 /* SerieCell.swift */; };
+		F4D841041E64949D0073D339 /* TryAgainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D841031E64949D0073D339 /* TryAgainView.swift */; };
 		F4EC84BF1E622CE7006DFFF7 /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC84BE1E622CE7006DFFF7 /* NavigationDelegate.swift */; };
 		F4EC84C11E622D62006DFFF7 /* TransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC84C01E622D62006DFFF7 /* TransitionController.swift */; };
 		F4EC84C31E62424B006DFFF7 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EC84C21E62424B006DFFF7 /* CharacterView.swift */; };
@@ -137,6 +138,7 @@
 		F48A4A321E60F246006E3D2F /* ServiceBaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceBaseTests.swift; path = Services/ServiceBaseTests.swift; sourceTree = "<group>"; };
 		F4D840FF1E6482240073D339 /* Serie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
 		F4D841011E64876F0073D339 /* SerieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerieCell.swift; sourceTree = "<group>"; };
+		F4D841031E64949D0073D339 /* TryAgainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TryAgainView.swift; sourceTree = "<group>"; };
 		F4EC84BE1E622CE7006DFFF7 /* NavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		F4EC84C01E622D62006DFFF7 /* TransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionController.swift; sourceTree = "<group>"; };
 		F4EC84C21E62424B006DFFF7 /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				F439A6E51E63686F0087CD6D /* LoadingView.swift */,
 				F439A6ED1E639BAF0087CD6D /* ComicCell.swift */,
 				F4D841011E64876F0073D339 /* SerieCell.swift */,
+				F4D841031E64949D0073D339 /* TryAgainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				F47A4BBA1E5E3EB800A7B551 /* UIViewExtension.swift in Sources */,
 				F45DD38E1E55180600ABFFBA /* AppDelegate.swift in Sources */,
 				F47A4BB21E5E3CAD00A7B551 /* Reusable.swift in Sources */,
+				F4D841041E64949D0073D339 /* TryAgainView.swift in Sources */,
 				F42458011E57B96B00EEDCF6 /* Constants.swift in Sources */,
 				F427ED521E567447008B72D7 /* Representable.swift in Sources */,
 				F465E8351E5A58B400F5CA4B /* StringExtension.swift in Sources */,

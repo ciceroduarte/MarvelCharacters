@@ -11,4 +11,5 @@ import Foundation
 struct LocalizedStrings {
     static let comics: String = NSLocalizedString("COMICS", comment: "")
     static let series: String = NSLocalizedString("SERIES", comment: "")
+    static let tryAgain: String = NSLocalizedString("TRY AGAIN", comment: "")
 }

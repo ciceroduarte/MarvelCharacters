@@ -1,4 +1,8 @@
 language: objective-c
 osx_image: xcode8.2
+xcode_sdk: iphonesimulator10.2
 xcode_workspace: MarvelCharacters.xcworkspace
 xcode_scheme: MarvelCharacters
+
+script:
+  - xcodebuild -workspace MarvelCharacters.xcworkspace -scheme MarvelCharacters -sdk iphonesimulator10.2 -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty -c;

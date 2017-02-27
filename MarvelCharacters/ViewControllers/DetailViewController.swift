@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
+import DZNEmptyDataSet
 
 class DetailViewController: UIViewController, UICollectionViewDataSource,
-UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDelegate {
+UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DetailViewModelDelegate {
     
     let detailViewModel: DetailViewModel
     
@@ -45,6 +46,7 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDel
         
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
+        contentView.collectionView.emptyDataSetSource = self
         
         contentView.collectionView.register(ComicCell.self)
         contentView.collectionView.register(SerieCell.self)
@@ -79,6 +81,11 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDel
         contentView.tryAgainView.hide()
         contentView.loadingView.show()
         fetch(withOption: contentView.segmentedControl.selectedSegmentIndex)
+    }
+    
+    // MARK: DZNEmptyDataSetSource
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString {
+        return LocalizedStrings.emptyData
     }
     
     // MARK: UICollectionViewDataSource

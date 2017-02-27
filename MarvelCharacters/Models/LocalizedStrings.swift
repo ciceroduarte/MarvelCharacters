@@ -9,7 +9,8 @@
 import Foundation
 
 struct LocalizedStrings {
-    static let comics: String = NSLocalizedString("COMICS", comment: "")
-    static let series: String = NSLocalizedString("SERIES", comment: "")
-    static let tryAgain: String = NSLocalizedString("TRY AGAIN", comment: "")
+    static let comics = NSLocalizedString("COMICS", comment: "")
+    static let series = NSLocalizedString("SERIES", comment: "")
+    static let tryAgain = NSLocalizedString("TRY AGAIN", comment: "")
+    static let emptyData = NSAttributedString(string: NSLocalizedString("EMPTY DATA", comment: ""))
 }

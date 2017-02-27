@@ -12,10 +12,12 @@ class HomeView: UIView {
     
     let collectionView: UICollectionView
     let loadingView: LoadingView
+    let tryAgainView: TryAgainView
     
     init() {
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: DynamicHeightLayout())
         loadingView = LoadingView()
+        tryAgainView = TryAgainView()
         
         super.init(frame: CGRect.zero)
         setupViews()
@@ -27,9 +29,10 @@ class HomeView: UIView {
     }
     
     func setupViews() {
-        addSubviews(views: [collectionView, loadingView])
+        addSubviews(views: [collectionView, loadingView, tryAgainView])
         
         collectionView.backgroundColor = .white
+        tryAgainView.isHidden = true
     }
     
     func setupConstraints() {
@@ -39,6 +42,10 @@ class HomeView: UIView {
         }
         
         loadingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        tryAgainView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }

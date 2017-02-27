@@ -25,16 +25,27 @@ class LoadingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+    private func setupViews() {
         addSubview(activityIndicatorView)
         activityIndicatorView.startAnimating()
         backgroundColor = .white
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         
         activityIndicatorView.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+    }
+    
+    func show() {
+        isHidden = false
+        activityIndicatorView.startAnimating()
+        
+    }
+    
+    func hide() {
+        isHidden = true
+        activityIndicatorView.stopAnimating()
     }
 }

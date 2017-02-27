@@ -11,7 +11,7 @@ import UIKit
 class DetailView: UIView {
     
     let characterView: CharacterView
-    private let loadingView: LoadingView
+    let loadingView: LoadingView
     let segmentedControl: UISegmentedControl
     let collectionView: UICollectionView
     
@@ -68,16 +68,5 @@ class DetailView: UIView {
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(segmentedControl.snp.bottom).offset(1)
         }
-    }
-    
-    func showLoading() {
-        loadingView.isHidden = false
-        loadingView.activityIndicatorView.startAnimating()
-        
-    }
-    
-    func hideLoading() {
-        loadingView.isHidden = true
-        loadingView.activityIndicatorView.stopAnimating()
     }
 }

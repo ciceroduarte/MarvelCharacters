@@ -23,6 +23,7 @@ class DetailView: UIView {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        collectionView.alwaysBounceVertical = true
         
         super.init(frame: CGRect.zero)
         setupViews()
@@ -65,7 +66,7 @@ class DetailView: UIView {
         
         loadingView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(characterView.snp.bottom)
+            make.top.equalTo(segmentedControl.snp.bottom).offset(1)
         }
     }
     

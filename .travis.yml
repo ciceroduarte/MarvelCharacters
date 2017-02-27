@@ -1,0 +1,4 @@
+language: objective-c
+osx_image: xcode8.2
+xcode_workspace: MarvelCharacters.xcworkspace
+xcode_scheme: MarvelCharacters

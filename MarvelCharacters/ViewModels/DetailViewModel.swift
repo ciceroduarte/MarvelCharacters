@@ -11,6 +11,7 @@ import Foundation
 protocol DetailViewModelDelegate : class {
     func comicsDidChange() -> Void
     func seriesDidChange() -> Void
+    func fetchDidFailed() -> Void
 }
 
 class DetailViewModel: CharacterHandler {
@@ -38,7 +39,8 @@ class DetailViewModel: CharacterHandler {
                 self?.character.comics = comics
                 self?.viewDelegate?.comicsDidChange()            
 
-            case .failure( _): print("Error")
+            case .failure( _):
+                self?.viewDelegate?.fetchDidFailed()
             }
         }
     }
@@ -56,7 +58,8 @@ class DetailViewModel: CharacterHandler {
                 self?.character.series = series
                 self?.viewDelegate?.seriesDidChange()
                 
-            case .failure( _): print("Error")
+            case .failure( _):
+                self?.viewDelegate?.fetchDidFailed()
             }
         })
     }

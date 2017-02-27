@@ -10,6 +10,7 @@ import Foundation
 
 protocol HomeViewModelDelegate : class {
     func charactersDidChange() -> Void
+    func fetchDidFailed() -> Void
 }
 
 class HomeViewModel {
@@ -28,7 +29,8 @@ class HomeViewModel {
             switch result {
             case .success(let characters):
                 self?.charactersList.append(contentsOf: characters)
-            case .failure( _): print("Error")
+            case .failure( _):
+                self?.viewDelegate?.fetchDidFailed()
             }
         }
     }

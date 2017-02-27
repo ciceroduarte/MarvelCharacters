@@ -32,7 +32,7 @@ class HomeView: UIView {
         addSubviews(views: [collectionView, loadingView, tryAgainView])
         
         collectionView.backgroundColor = .white
-        tryAgainView.isHidden = true
+        tryAgainView.hide()
     }
     
     func setupConstraints() {

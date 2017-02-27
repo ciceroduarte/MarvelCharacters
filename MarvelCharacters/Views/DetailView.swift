@@ -14,11 +14,13 @@ class DetailView: UIView {
     let loadingView: LoadingView
     let segmentedControl: UISegmentedControl
     let collectionView: UICollectionView
+    let tryAgainView: TryAgainView
     
     init() {
         characterView = CharacterView(frame: CGRect.zero)
         loadingView = LoadingView()
         segmentedControl = UISegmentedControl(items: [LocalizedStrings.comics, LocalizedStrings.series])
+        tryAgainView = TryAgainView()
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -35,13 +37,14 @@ class DetailView: UIView {
     }
     
     func setupViews() {
-        addSubviews(views: [characterView, segmentedControl, collectionView, loadingView])
+        addSubviews(views: [characterView, segmentedControl, collectionView, tryAgainView, loadingView])
         
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.tintColor = .black
         
         collectionView.backgroundColor = .white
         backgroundColor = .white
+        tryAgainView.hide()
     }
     
     func setupConstraints() {
@@ -65,6 +68,11 @@ class DetailView: UIView {
         }
         
         loadingView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(segmentedControl.snp.bottom).offset(1)
+        }
+        
+        tryAgainView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(segmentedControl.snp.bottom).offset(1)
         }

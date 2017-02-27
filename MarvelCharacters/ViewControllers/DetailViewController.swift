@@ -54,6 +54,7 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDel
         characterView.image.kf.setImage(with: detailViewModel.characterImage())
         
         contentView.segmentedControl.addTarget(self, action: #selector(segmentedControlerDidChange), for: .valueChanged)
+        contentView.tryAgainView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
         
         detailViewModel.fetchComics()
         contentView.loadingView.show()
@@ -62,12 +63,22 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDel
     func segmentedControlerDidChange(sender: UISegmentedControl) {
         detailViewModel.cancelServices()
         contentView.loadingView.show()
-        
-        if sender.selectedSegmentIndex == 0 {
+        fetch(withOption: sender.selectedSegmentIndex)
+    }
+    
+    func fetch(withOption option: Int) {
+        if option == 0 {
             detailViewModel.fetchComics()
         } else {
             detailViewModel.fetchSeries()
         }
+    }
+    
+    // MARK: Actions
+    func tryAgain() {
+        contentView.tryAgainView.hide()
+        contentView.loadingView.show()
+        fetch(withOption: contentView.segmentedControl.selectedSegmentIndex)
     }
     
     // MARK: UICollectionViewDataSource
@@ -105,16 +116,44 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DetailViewModelDel
         
     // MARK - DetailViewModelDelegate
     func comicsDidChange() {
-        contentView.loadingView.hide()
-        contentView.collectionView.reloadData()
+        if contentView.segmentedControl.selectedSegmentIndex == 0 {
+            reloadContent()
+        }
+
     }
     
     func seriesDidChange() {
-        contentView.loadingView.hide()
-        contentView.collectionView.reloadData()
+        if contentView.segmentedControl.selectedSegmentIndex == 1 {
+            reloadContent()
+        }
     }
     
     func fetchDidFailed() {
-        
     }
+    
+    func comicsFetchDidFailed() {
+        if contentView.segmentedControl.selectedSegmentIndex == 0 {
+            showTryAgain()
+        }
+    }
+    
+    func seriesFetchDidFailed() {
+        if contentView.segmentedControl.selectedSegmentIndex == 1 {
+            showTryAgain()
+        }
+    }
+
+    func reloadContent() {
+        contentView.tryAgainView.hide()
+        contentView.loadingView.hide()
+        contentView.collectionView.reloadData()
+        contentView.collectionView.isHidden = false
+    }
+    
+    func showTryAgain() {
+        contentView.collectionView.isHidden = true
+        contentView.tryAgainView.show()
+        contentView.loadingView.hide()
+    }
+    
 }

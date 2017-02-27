@@ -12,6 +12,7 @@ class ServiceBase {
     lazy var offset = 0
     lazy var total = 0
     private let session: URLSessionProtocol
+    private var task: URLSessionDataTaskProtocol?
     
     internal var parameters: String {
         let authentication = (timestamp() + Keys.privateKey + Keys.publicKey).md5()
@@ -48,7 +49,11 @@ class ServiceBase {
             return
         }
         
-        let task = session.data(with: url) { (data, _, _) -> Void in
+        task = session.data(with: url) { (data, response, error) -> Void in
+            
+            if error != nil {
+                completionHandler(Result.failure(FetchError.networkFailed))
+            }
             
             DispatchQueue.global(qos: .background).async {
                 
@@ -72,7 +77,11 @@ class ServiceBase {
                 }
             }
         }
-        task.resume()
+        task?.resume()
+    }
+    
+    internal func cancel() {
+        task?.cancel()
     }
     
     internal func timestamp() -> String {

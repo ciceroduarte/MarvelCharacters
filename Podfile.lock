@@ -1,18 +1,21 @@
 PODS:
+  - DZNEmptyDataSet (1.8.1)
   - Kingfisher (3.2.4)
   - SnapKit (3.0.2)
   - UIScrollView-InfiniteScroll (1.0.0)
 
 DEPENDENCIES:
+  - DZNEmptyDataSet
   - Kingfisher (~> 3.0)
   - SnapKit (~> 3.0.2)
   - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Kingfisher: 8d80f39da403cd9c9ee11984e1655f4d6a566cdb
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   UIScrollView-InfiniteScroll: d26885be71caca7485cdb37eab513a8f89036bb0
 
-PODFILE CHECKSUM: ef26b70f5a3f87018d6a8501cfb8d005bd32a49e
+PODFILE CHECKSUM: 8d023ed64b5a0cce2c388f316b64fbb21a620ca4
 
 COCOAPODS: 1.2.0.beta.3

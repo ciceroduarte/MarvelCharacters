@@ -8,6 +8,7 @@ target 'MarvelCharacters' do
     pod 'SnapKit', '~> 3.0.2'
     pod 'Kingfisher', '~> 3.0'
     pod 'UIScrollView-InfiniteScroll'
+    pod 'DZNEmptyDataSet'
 
   target 'MarvelCharactersTests' do
     inherit! :search_paths

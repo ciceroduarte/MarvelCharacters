@@ -63,6 +63,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: Actions
     func tryAgain() {
         contentView.tryAgainView.hide()
         contentView.loadingView.show()
@@ -100,7 +101,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
         
-        navigationController?.setNavigationBarHidden(false, animated: true)
         let detailViewController = DetailViewController(withViewModel: 
         homeViewModel.detailViewModel(for: indexPath))
         navigationController?.pushViewController(detailViewController, animated: true)

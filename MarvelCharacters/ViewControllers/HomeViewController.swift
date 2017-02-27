@@ -52,6 +52,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             layout.delegate = self
         }
         
+        contentView.tryAgainView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
+        
         homeViewModel.viewDelegate = self
         homeViewModel.loadCharacters()
     }
@@ -61,11 +63,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.didReceiveMemoryWarning()
     }
     
+    func tryAgain() {
+        contentView.tryAgainView.isHidden = true
+        contentView.loadingView.show()
+        homeViewModel.loadCharacters()
+    }
+    
     // MARK: HomeViewModelDelegate
     internal func charactersDidChange() {
         contentView.loadingView.isHidden = true
         contentView.collectionView.finishInfiniteScroll()
         contentView.collectionView.reloadData()
+    }
+    
+    func fetchDidFailed() {
+        contentView.tryAgainView.isHidden = false
+        contentView.loadingView.hide()
     }
     
     // MARK: UICollectionViewDataSource

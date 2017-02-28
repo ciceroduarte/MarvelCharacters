@@ -6,7 +6,7 @@ before_install:
   - pod install
 
 script:
-  - xcodebuild -workspace MarvelCharacters.xcworkspace -scheme MarvelCharacters -sdk iphonesimulator10.2 -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.2' -configuration Debug ENABLE_TESTABILITY=YES test | xcpretty -c;
+  - xcodebuild -workspace MarvelCharacters.xcworkspace -scheme MarvelCharacters -sdk iphonesimulator10.2 -destination 'name=iPhone 6,OS=10.2' -configuration Debug ENABLE_TESTABILITY=YES test | xcpretty -c;
   
 after_success:
   - bash <(curl -s https://codecov.io/bash)

@@ -1,15 +1,12 @@
 language: objective-c
 osx_image: xcode8.2
-xcode_sdk: iphonesimulator10.2
-xcode_workspace: MarvelCharacters.xcworkspace
-xcode_scheme: MarvelCharacters
 
 before_install:
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
   - pod install
 
 script:
-  - xcodebuild -workspace MarvelCharacters.xcworkspace -scheme MarvelCharacters -sdk iphonesimulator10.2 -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty -c;
+  - xcodebuild -workspace MarvelCharacters.xcworkspace -scheme MarvelCharacters -sdk iphonesimulator10.2 -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.2' -configuration Debug ENABLE_TESTABILITY=YES test | xcpretty -c;
   
 after_success:
   - bash <(curl -s https://codecov.io/bash)

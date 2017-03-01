@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8.2
+osx_image: xcode8.1
 xcode_workspace: MarvelCharacters.xcworkspace
 xcode_scheme: MarvelCharacters
 xcode_sdk: iphonesimulator10.1
@@ -8,7 +8,7 @@ before_install:
   - pod install
 
 script:
-  - xcodebuild test -workspace MarvelCharacters.xcworkspace -scheme 'MarvelCharacters' -sdk iphonesimulator | xcpretty -c
+  - xcodebuild -workspace MarvelCharacters.xcworkspace -scheme 'MarvelCharacters' -sdk iphonesimulator10.1 -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.1' test | xcpretty -c
   
 after_success:
   - bash <(curl -s https://codecov.io/bash)

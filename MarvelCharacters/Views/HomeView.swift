@@ -32,6 +32,9 @@ class HomeView: UIView {
         addSubviews(views: [collectionView, loadingView, tryAgainView])
         
         collectionView.backgroundColor = .white
+        collectionView.isAccessibilityElement = true
+        collectionView.accessibilityLabel = "collectionView"
+        
         tryAgainView.hide()
     }
     

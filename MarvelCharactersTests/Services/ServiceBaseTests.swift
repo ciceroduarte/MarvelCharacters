@@ -13,7 +13,7 @@ import Foundation
 class ServiceBaseTests: XCTestCase {
     var sut: ServiceBase!
     var session = MockURLSession()
-    let url = URL(string: "http://masilotti.com")!
+    let url = URL(string: "http://www.github.com")!
     var error: FetchError?
     
     override func setUp() {
@@ -89,6 +89,8 @@ class ServiceBaseTests: XCTestCase {
         
         let expectedData = ("{\"data\": { \"offset\": 0, \"limit\": 20, \"total\": 30920," +
         "\"count\": 20, \"results\": [{\"name\": \"cicero\", \"description\": \"description\"," +
+            "\"comics\": { \"collectionURI\": \"http://www.google.com.br\" }," +
+            "\"series\": { \"collectionURI\": \"http://www.google.com.br\" }," +
         "\"thumbnail\":{ \"path\": \"http://www.google.com.br\", \"extension\": \"png\"} }]}}"
             ).data(using: String.Encoding.utf8)
         session.nextData = expectedData

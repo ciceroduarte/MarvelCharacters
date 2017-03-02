@@ -8,7 +8,7 @@ before_install:
   - pod install
 
 script:
-  - xcodebuild -workspace MarvelCharacters.xcworkspace -scheme 'MarvelCharacters' -sdk iphonesimulator10.1 -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.1' test | xcpretty -c
+  - xcodebuild -workspace MarvelCharacters.xcworkspace -scheme 'MarvelCharacters' -sdk iphonesimulator10.1 -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.1' -enableCodeCoverage YES test
   
 after_success:
   - bash <(curl -s https://codecov.io/bash)

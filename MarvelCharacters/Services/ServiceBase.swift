@@ -11,7 +11,7 @@ import Foundation
 class ServiceBase {
     lazy var offset = 0
     lazy var total = 0
-    private let session: URLSessionProtocol
+    var session: URLSessionProtocol
     private var task: URLSessionDataTaskProtocol?
     
     internal var parameters: String {

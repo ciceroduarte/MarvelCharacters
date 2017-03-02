@@ -17,28 +17,6 @@ class MarvelCharactersUITests: XCTestCase {
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-    }
-    
-    func testCharacterList() {
-        
-//        let app = XCUIApplication()
-//        
-//        let collectionView = app.otherElements
-//            .containing(.navigationBar, identifier:"MARVEL")
-//            .children(matching: .other)
-//            .element
-//            .children(matching: .other)
-//            .element
-//            .children(matching: .other)
-//            .element
-//            .children(matching: .collectionView)
-//            .element
-//        
-//        collectionView.swipeUp()
-//        collectionView.swipeUp()
-//        collectionView.swipeUp()
-//        collectionView.swipeUp()
     }
 }

@@ -12,7 +12,7 @@ target 'MarvelCharacters' do
 
   target 'MarvelCharactersTests' do
     inherit! :search_paths
-    # Pods for testing
+    pod 'KIF', '~> 3.0', :configurations => ['Debug']
   end
 
   target 'MarvelCharactersUITests' do

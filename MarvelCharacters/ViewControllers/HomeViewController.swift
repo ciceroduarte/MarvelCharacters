@@ -37,10 +37,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let _ = navigationController?.delegate as? NavigationDelegate else {
-            fatalError("Invalide navigation delegate!")
-        }
-        
         navigationItem.title = "MARVEL"
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self

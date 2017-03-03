@@ -79,7 +79,7 @@ class DetailViewModel: CharacterHandler {
     }
 
     func comicImageUrl(withIndex index: IndexPath) -> URL? {
-        return character.comics?[index.row].image?.portraitUrl
+        return character.comics?[index.row].image.portraitUrl
     }
     
     func comicTitle(withIndex index: IndexPath) -> String {
@@ -87,7 +87,7 @@ class DetailViewModel: CharacterHandler {
     }
     
     func serieImageUrl(withIndex index: IndexPath) -> URL? {
-        return character.series?[index.row].image?.portraitUrl
+        return character.series?[index.row].image.portraitUrl
     }
     
     func serieTitle(withIndex index: IndexPath) -> String {

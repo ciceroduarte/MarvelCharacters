@@ -11,7 +11,7 @@ import Foundation
 struct Serie: Representable {
     
     var title: String
-    var image: Image?
+    var image: Image
     
     init? (withRepresentation representation: [String: Any]?) {
         

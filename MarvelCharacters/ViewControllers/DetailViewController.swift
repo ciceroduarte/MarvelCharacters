@@ -12,6 +12,11 @@ import DZNEmptyDataSet
 
 class DetailViewController: UIViewController, UICollectionViewDataSource,
 UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DetailViewModelDelegate {
+
+    enum Option: Int {
+        case comics
+        case series
+    }
     
     let detailViewModel: DetailViewModel
     
@@ -91,18 +96,13 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        
-        let selected = contentView.segmentedControl.selectedSegmentIndex
-        
-        return selected == 0 ? detailViewModel.numberOfComics() : detailViewModel.numberOfSeries()
+        return selectedOption() == .comics ? detailViewModel.numberOfComics() : detailViewModel.numberOfSeries()
     }
     
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let selected = contentView.segmentedControl.selectedSegmentIndex
-        
-        if selected == 0 {
+        if selectedOption() == .comics {
             let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as ComicCell
             cell.config(withImage: detailViewModel.comicImageUrl(withIndex: indexPath),
                         name: detailViewModel.comicTitle(withIndex: indexPath))
@@ -123,14 +123,14 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
         
     // MARK - DetailViewModelDelegate
     func comicsDidChange() {
-        if contentView.segmentedControl.selectedSegmentIndex == 0 {
+        if selectedOption() == .comics {
             reloadContent()
         }
 
     }
     
     func seriesDidChange() {
-        if contentView.segmentedControl.selectedSegmentIndex == 1 {
+        if selectedOption() == .series {
             reloadContent()
         }
     }
@@ -139,17 +139,21 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
     }
     
     func comicsFetchDidFailed() {
-        if contentView.segmentedControl.selectedSegmentIndex == 0 {
+        if selectedOption() == .comics {
             showTryAgain()
         }
     }
     
     func seriesFetchDidFailed() {
-        if contentView.segmentedControl.selectedSegmentIndex == 1 {
+        if selectedOption() == .series {
             showTryAgain()
         }
     }
 
+    func selectedOption() -> Option {
+        return Option(rawValue: contentView.segmentedControl.selectedSegmentIndex) ?? .comics
+    }
+    
     func reloadContent() {
         contentView.tryAgainView.hide()
         contentView.loadingView.hide()

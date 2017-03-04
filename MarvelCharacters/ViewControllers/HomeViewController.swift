@@ -57,7 +57,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     override func didReceiveMemoryWarning() {
-        
         super.didReceiveMemoryWarning()
     }
     

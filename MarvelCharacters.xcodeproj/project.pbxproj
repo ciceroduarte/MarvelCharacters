@@ -11,7 +11,9 @@
 		0F29DADB0C5B5C20C90F7D18 /* Pods_MarvelCharactersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AA348C36963A9F9243A696 /* Pods_MarvelCharactersTests.framework */; };
 		6B3E7B7C973C0F367C00E2F7 /* Pods_MarvelCharacters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A3E9A7B0FF0AEA02A0B4F4 /* Pods_MarvelCharacters.framework */; };
 		F40175271E6787D200921AF8 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40175261E6787D200921AF8 /* XCTestCaseExtension.swift */; };
-		F41C57931E6B7D61004CDFDC /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C57921E6B7D61004CDFDC /* HomeViewControllerTests.swift */; };
+		F41C57931E6B7D61004CDFDC /* HomeViewLoadingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C57921E6B7D61004CDFDC /* HomeViewLoadingTest.swift */; };
+		F41C57951E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C57941E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift */; };
+		F41C57971E6B7F0F004CDFDC /* HomeViewEmptyDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C57961E6B7F0F004CDFDC /* HomeViewEmptyDataTest.swift */; };
 		F42457FF1E57B8BF00EEDCF6 /* ServiceBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42457FE1E57B8BF00EEDCF6 /* ServiceBase.swift */; };
 		F42458011E57B96B00EEDCF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42458001E57B96B00EEDCF6 /* Constants.swift */; };
 		F42458031E57BA0200EEDCF6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42458021E57BA0200EEDCF6 /* Result.swift */; };
@@ -93,7 +95,9 @@
 		F1AA348C36963A9F9243A696 /* Pods_MarvelCharactersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharactersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40175251E6786BC00921AF8 /* MarvelCharactersTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarvelCharactersTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		F40175261E6787D200921AF8 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
-		F41C57921E6B7D61004CDFDC /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		F41C57921E6B7D61004CDFDC /* HomeViewLoadingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewLoadingTest.swift; sourceTree = "<group>"; };
+		F41C57941E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewTryAgainTest.swift; sourceTree = "<group>"; };
+		F41C57961E6B7F0F004CDFDC /* HomeViewEmptyDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewEmptyDataTest.swift; sourceTree = "<group>"; };
 		F42457FE1E57B8BF00EEDCF6 /* ServiceBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceBase.swift; sourceTree = "<group>"; };
 		F42458001E57B96B00EEDCF6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F42458021E57BA0200EEDCF6 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -215,7 +219,9 @@
 		F41C578F1E6B7CEC004CDFDC /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				F41C57921E6B7D61004CDFDC /* HomeViewControllerTests.swift */,
+				F41C57921E6B7D61004CDFDC /* HomeViewLoadingTest.swift */,
+				F41C57941E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift */,
+				F41C57961E6B7F0F004CDFDC /* HomeViewEmptyDataTest.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -751,8 +757,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48A4A351E60F246006E3D2F /* ServiceBaseTests.swift in Sources */,
-				F41C57931E6B7D61004CDFDC /* HomeViewControllerTests.swift in Sources */,
+				F41C57971E6B7F0F004CDFDC /* HomeViewEmptyDataTest.swift in Sources */,
+				F41C57931E6B7D61004CDFDC /* HomeViewLoadingTest.swift in Sources */,
 				F4D571F21E68EDA0009BF387 /* ComicTests.swift in Sources */,
+				F41C57951E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift in Sources */,
 				F48A4A331E60F246006E3D2F /* MockURLSession.swift in Sources */,
 				F48A4A2E1E60F14C006E3D2F /* CharacterTests.swift in Sources */,
 				F40175271E6787D200921AF8 /* XCTestCaseExtension.swift in Sources */,

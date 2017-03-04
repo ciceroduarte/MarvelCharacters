@@ -28,6 +28,8 @@ class TryAgainView: UIView {
     func setupViews() {
         addSubview(tryAgainButton)
         
+        backgroundColor = .white
+        
         tryAgainButton.setTitle(LocalizedStrings.tryAgain, for: .normal)
         tryAgainButton.tintColor = .black
         tryAgainButton.setTitleColor(.black, for: .normal)

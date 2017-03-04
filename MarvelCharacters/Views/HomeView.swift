@@ -38,6 +38,24 @@ class HomeView: UIView {
         tryAgainView.hide()
     }
     
+    func showTryAgain() {
+        tryAgainView.show()
+        loadingView.hide()
+        collectionView.isHidden = true
+    }
+    
+    func showLoadingView() {
+        loadingView.show()
+        tryAgainView.hide()
+        collectionView.isHidden = true
+    }
+    
+    func showCollectionView() {
+        collectionView.isHidden = false
+        loadingView.hide()
+        tryAgainView.hide()
+    }
+    
     func setupConstraints() {
         
         collectionView.snp.makeConstraints { make in

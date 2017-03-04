@@ -63,8 +63,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: Actions
     func tryAgain() {
-        contentView.tryAgainView.hide()
-        contentView.loadingView.show()
+        contentView.showLoadingView()
         homeViewModel.loadCharacters()
     }
     
@@ -75,14 +74,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: HomeViewModelDelegate
     internal func charactersDidChange() {
-        contentView.loadingView.hide()
+        contentView.showCollectionView()
         contentView.collectionView.finishInfiniteScroll()
         contentView.collectionView.reloadData()
     }
     
     func fetchDidFailed() {
-        contentView.tryAgainView.show()
-        contentView.loadingView.hide()
+        contentView.showTryAgain()
     }
     
     // MARK: UICollectionViewDataSource

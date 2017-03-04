@@ -12,8 +12,6 @@ import KIF
 
 class MarvelCharactersTests: KIFTestCase {
 
-    var homeViewController: HomeViewController?
-    
     override func beforeEach() {
         stopTestsOnFirstBigFailure = true
         
@@ -31,7 +29,7 @@ class MarvelCharactersTests: KIFTestCase {
         
         homeViewModel.charactersService.session = mockSession
         
-        homeViewController = HomeViewController(withHomeViewModel: homeViewModel)
+        let homeViewController = HomeViewController(withHomeViewModel: homeViewModel)
         let navigationController = UINavigationController(rootViewController: homeViewController!)
         appDelegate?.window?.rootViewController = navigationController
     }
@@ -45,7 +43,6 @@ class MarvelCharactersTests: KIFTestCase {
     }
     
     func testCharacterDetail() {
-        //waitForTimeInterval:(NSTimeInterval)timeInterval
         guard let collectionView = tester()
             .waitForView(withAccessibilityLabel: "collectionView") as? UICollectionView else {
             XCTFail("CollectionView not found")

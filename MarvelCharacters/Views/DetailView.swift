@@ -43,6 +43,8 @@ class DetailView: UIView {
         segmentedControl.tintColor = .black
         
         collectionView.backgroundColor = .white
+        collectionView.isAccessibilityElement = true
+        collectionView.accessibilityLabel = "collectionView"
         backgroundColor = .white
         tryAgainView.hide()
     }

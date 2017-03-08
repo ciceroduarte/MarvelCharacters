@@ -126,16 +126,12 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
         if selectedOption() == .comics {
             reloadContent()
         }
-
     }
     
     func seriesDidChange() {
         if selectedOption() == .series {
             reloadContent()
         }
-    }
-    
-    func fetchDidFailed() {
     }
     
     func comicsFetchDidFailed() {

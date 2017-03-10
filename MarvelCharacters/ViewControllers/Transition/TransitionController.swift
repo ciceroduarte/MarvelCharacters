@@ -13,7 +13,7 @@ typealias Transition = UITransitionContextViewControllerKey
 class TransitionController: NSObject, UIViewControllerAnimatedTransitioning {
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 0.4
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

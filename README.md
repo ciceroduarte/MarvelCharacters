@@ -13,6 +13,17 @@
 
 ## Usage
 
-To run the project, clone the repo, and run `pod install` from the directory.
+- Create a account on [Marvel Developer Portal](http://developer.marvel.com)
+- Go to [My Developer Account](https://developer.marvel.com/account)
+- Update `Constants.swift` with your Public and Private keys
+
+```swift
+struct Keys {
+    static let privateKey: String = "PRIVATE_KEY"
+    static let publicKey: String = "PUBLIC_KEY"
+}
+```
+
+- Run `pod install` from the directory
 
 [img0]:https://raw.githubusercontent.com/ciceroduarte/MarvelCharacters/master/images/transition.gif

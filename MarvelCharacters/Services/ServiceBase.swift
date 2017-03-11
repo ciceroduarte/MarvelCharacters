@@ -17,7 +17,7 @@ class ServiceBase {
     internal var parameters: String {
         let authentication = (timestamp() + Keys.privateKey + Keys.publicKey).md5()
         return "?" + ServiceParameters.timestamp + "=" + timestamp() + "&"
-            + ServiceParameters.apiKey + "=" + Keys.apikey + "&"
+            + ServiceParameters.apiKey + "=" + Keys.publicKey + "&"
             + ServiceParameters.hash + "=" + authentication
     }
     

@@ -13,6 +13,7 @@ import KIF
 class TransitionTest: KIFTestCase {
     
     let navigationDelegate = NavigationDelegate()
+    var navigationController: UINavigationController?
     
     override func beforeEach() {
         stopTestsOnFirstBigFailure = true
@@ -33,8 +34,8 @@ class TransitionTest: KIFTestCase {
         homeViewModel.charactersService.session = mockSession
         
         let homeViewController = HomeViewController(withHomeViewModel: homeViewModel)
-        let navigationController = UINavigationController(rootViewController: homeViewController)
-        navigationController.delegate = navigationDelegate
+        navigationController = UINavigationController(rootViewController: homeViewController)
+        navigationController?.delegate = navigationDelegate
         appDelegate?.window?.rootViewController = navigationController
     }
     
@@ -57,6 +58,10 @@ class TransitionTest: KIFTestCase {
         XCTAssertNotNil(collectionView)
         
         let indexPath = IndexPath(row: 0, section: 0)
+        tester().tapItem(at: indexPath, in: collectionView)
+
+        _ = navigationController?.popViewController(animated: true)
+
         tester().tapItem(at: indexPath, in: collectionView)
     }
 }

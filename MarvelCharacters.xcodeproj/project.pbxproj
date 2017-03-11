@@ -11,6 +11,7 @@
 		0F29DADB0C5B5C20C90F7D18 /* Pods_MarvelCharactersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AA348C36963A9F9243A696 /* Pods_MarvelCharactersTests.framework */; };
 		6B3E7B7C973C0F367C00E2F7 /* Pods_MarvelCharacters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A3E9A7B0FF0AEA02A0B4F4 /* Pods_MarvelCharacters.framework */; };
 		F40175271E6787D200921AF8 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40175261E6787D200921AF8 /* XCTestCaseExtension.swift */; };
+		F408E9571E74AA9E00B46169 /* ServiceSeriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408E9561E74AA9E00B46169 /* ServiceSeriesTests.swift */; };
 		F41C57931E6B7D61004CDFDC /* HomeViewLoadingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C57921E6B7D61004CDFDC /* HomeViewLoadingTest.swift */; };
 		F41C57951E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C57941E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift */; };
 		F41C57971E6B7F0F004CDFDC /* HomeViewEmptyDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C57961E6B7F0F004CDFDC /* HomeViewEmptyDataTest.swift */; };
@@ -98,6 +99,7 @@
 		F1AA348C36963A9F9243A696 /* Pods_MarvelCharactersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharactersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40175251E6786BC00921AF8 /* MarvelCharactersTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarvelCharactersTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		F40175261E6787D200921AF8 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
+		F408E9561E74AA9E00B46169 /* ServiceSeriesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceSeriesTests.swift; path = Services/ServiceSeriesTests.swift; sourceTree = "<group>"; };
 		F41C57921E6B7D61004CDFDC /* HomeViewLoadingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewLoadingTest.swift; sourceTree = "<group>"; };
 		F41C57941E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewTryAgainTest.swift; sourceTree = "<group>"; };
 		F41C57961E6B7F0F004CDFDC /* HomeViewEmptyDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewEmptyDataTest.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				F48A4A301E60F246006E3D2F /* MockURLSession.swift */,
 				F48A4A311E60F246006E3D2F /* MockURLSessionDataTask.swift */,
 				F48A4A321E60F246006E3D2F /* ServiceBaseTests.swift */,
+				F408E9561E74AA9E00B46169 /* ServiceSeriesTests.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				F41C57951E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift in Sources */,
 				F47213AF1E6F7B7D00C89CDD /* DetailViewComicsLoadingTest.swift in Sources */,
 				F48A4A331E60F246006E3D2F /* MockURLSession.swift in Sources */,
+				F408E9571E74AA9E00B46169 /* ServiceSeriesTests.swift in Sources */,
 				F48A4A2E1E60F14C006E3D2F /* CharacterTests.swift in Sources */,
 				F40175271E6787D200921AF8 /* XCTestCaseExtension.swift in Sources */,
 				F47213B11E6F826900C89CDD /* DetailViewSeriesLoadingTest.swift in Sources */,

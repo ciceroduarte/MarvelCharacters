@@ -61,7 +61,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     // MARK: Actions
-    func tryAgain() {
+    @objc func tryAgain() {
         contentView.showLoadingView()
         homeViewModel.loadCharacters()
     }

@@ -67,7 +67,7 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
         contentView.loadingView.show()
     }
     
-    func segmentedControlerDidChange(sender: UISegmentedControl) {
+    @objc func segmentedControlerDidChange(sender: UISegmentedControl) {
         detailViewModel.cancelServices()
         contentView.loadingView.show()
         fetch(withOption: sender.selectedSegmentIndex)
@@ -82,7 +82,7 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
     }
     
     // MARK: Actions
-    func tryAgain() {
+    @objc func tryAgain() {
         contentView.tryAgainView.hide()
         contentView.loadingView.show()
         fetch(withOption: contentView.segmentedControl.selectedSegmentIndex)

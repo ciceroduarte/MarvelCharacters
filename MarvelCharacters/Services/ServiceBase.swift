@@ -67,8 +67,8 @@ class ServiceBase {
                 
                 var resultList = [T]()
                 response.results.forEach({ result in
-                    if let r = T(withRepresentation: result) {
-                        resultList.append(r)
+                    if let result = T(withRepresentation: result) {
+                        resultList.append(result)
                     }
                 })
                 

@@ -12,7 +12,7 @@ class ComicsService: ServiceBase {
     
     func fetch (withURL url: URL, completionHandler: @escaping (Result<[Comic], FetchError>) -> Void) {
         
-        fetch(listOf: Comic.self, withURL:URL(string: url.absoluteString + getParameters())) { (result) in
+        fetch(listOf: Comic.self, withURL: URL(string: url.absoluteString + getParameters())) { (result) in
             switch result {
             case .success(let comics):
                 completionHandler(Result.success(comics))

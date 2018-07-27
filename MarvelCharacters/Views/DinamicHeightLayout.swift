@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol DynamicHeightLayoutDelegate : class {
+protocol DynamicHeightLayoutDelegate: class {
     func collectionView(collectionView: UICollectionView,
                         heightForItemAtIndexPath indexPath: IndexPath,
                         withWidth: CGFloat) -> CGFloat

@@ -30,7 +30,7 @@ class SerieTests: XCTestCase {
                 "path": "http://www.google.com.br",
                 "extension": "png"
             ]
-            ] as [String : Any]
+            ] as [String: Any]
         return representation
     }
     
@@ -50,7 +50,7 @@ class SerieTests: XCTestCase {
             "thumbnail": [
                 "path": "path"
             ]
-            ] as [String : Any]
+            ] as [String: Any]
         XCTAssertNil(Serie(withRepresentation: representation))
     }
     

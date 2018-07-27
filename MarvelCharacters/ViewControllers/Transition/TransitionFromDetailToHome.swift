@@ -59,11 +59,11 @@ extension TransitionController {
                                          width: detail.contentView.characterView.image.frame.size.width,
                                          height: detail.contentView.characterView.image.frame.size.height)
             home.view.alpha = 1.0
-        }) { _ in
+        }, completion: { _ in
             image.removeFromSuperview()
             cell.characterView.image.isHidden = false
             
             transitionContext.completeTransition(true)
-        }
+        })
     }
 }

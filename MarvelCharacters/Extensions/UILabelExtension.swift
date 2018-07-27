@@ -11,7 +11,7 @@ import UIKit
 extension UILabel {
 
     func height(forWidth width: CGFloat) -> CGFloat {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width:width, height: frame.height))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: frame.height))
         label.numberOfLines = 0
         label.font = font
         label.text = text

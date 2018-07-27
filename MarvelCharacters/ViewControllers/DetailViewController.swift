@@ -121,7 +121,7 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
         return CGSize(width: contentView.collectionView.frame.width, height: 145)
     }
         
-    // MARK - DetailViewModelDelegate
+    // MARK: - DetailViewModelDelegate
     func comicsDidChange() {
         if selectedOption() == .comics {
             reloadContent()

@@ -84,13 +84,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
+                        numberOfItemsInSection section: Int) -> Int {
         
         return homeViewModel.numberOfCharacters()
     }
     
     func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CharacterCell
         cell.config(withViewModel: homeViewModel.characterCellViewModel(at: indexPath))
@@ -99,10 +99,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView,
-                                 didSelectItemAt indexPath: IndexPath) {
+                        didSelectItemAt indexPath: IndexPath) {
         
-        let detailViewController = DetailViewController(withViewModel: 
-        homeViewModel.detailViewModel(for: indexPath))
+        let detailViewController = DetailViewController(withViewModel:
+            homeViewModel.detailViewModel(for: indexPath))
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     

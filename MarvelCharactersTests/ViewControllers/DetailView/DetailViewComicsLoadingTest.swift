@@ -29,7 +29,7 @@ class DetailViewComicsLoadingTest: KIFTestCase {
                 "path": "http://www.google.com.br",
                 "extension": "png"
             ]
-            ] as [String : Any]
+            ] as [String: Any]
         let character = Character(withRepresentation: representation)
         let detailViewModel = DetailViewModel(withCharacter: character!)
         let mockSession = MockURLSession()

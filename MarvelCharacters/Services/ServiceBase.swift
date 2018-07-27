@@ -32,12 +32,11 @@ class ServiceBase {
     internal func url(withPath path: String) -> URL? {
         return URL(string: Servies.base + path
             + parameters + "&"
-            + ServiceParameters.offset + "=" + String(stringInterpolationSegment: offset))
+            + ServiceParameters.offset + "=" + "\(offset)")
     }
     
-    internal func fetch<T: Representable>(listOf representable: T.Type,
-                         withURL url: URL?,
-                         completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
+    internal func fetch<T: Representable>(listOf representable: T.Type, withURL url: URL?,
+                                          completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
         
         guard let url = url else {
             completionHandler(Result.failure(FetchError.invalidURL))
@@ -51,11 +50,12 @@ class ServiceBase {
         
         task = session.data(with: url) { (data, response, error) -> Void in
             
-            if error != nil {
+            guard error == nil else {
                 completionHandler(Result.failure(FetchError.networkFailed))
+                return
             }
             
-            DispatchQueue.global(qos: .background).async {
+            DispatchQueue.global(qos: .default).async {
                 
                 guard let response = ServiceResponse(data) else {
                     completionHandler(Result.failure(FetchError.invalidJSON))
@@ -85,6 +85,6 @@ class ServiceBase {
     }
     
     internal func timestamp() -> String {
-        return String(format:"%.0f", NSDate().timeIntervalSince1970)
+        return String(format: "%.0f", NSDate().timeIntervalSince1970)
     }
 }

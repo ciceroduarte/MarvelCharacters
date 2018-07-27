@@ -47,7 +47,6 @@ class TransitionTest: KIFTestCase {
         super.tearDown()
     }
     
-    //TODO: Add transitionMock to verify transition call
     func testTransition() {
         guard let collectionView = tester()
             .waitForView(withAccessibilityLabel: "collectionView") as? UICollectionView else {

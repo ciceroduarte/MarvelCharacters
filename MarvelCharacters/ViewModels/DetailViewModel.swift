@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol DetailViewModelDelegate : class {
-    func comicsDidChange() -> Void
-    func seriesDidChange() -> Void
-    func seriesFetchDidFailed() -> Void
-    func comicsFetchDidFailed() -> Void
+protocol DetailViewModelDelegate: class {
+    func comicsDidChange()
+    func seriesDidChange()
+    func seriesFetchDidFailed()
+    func comicsFetchDidFailed()
 }
 
 class DetailViewModel: CharacterHandler {
@@ -40,7 +40,7 @@ class DetailViewModel: CharacterHandler {
                 self?.character.comics = comics
                 self?.viewDelegate?.comicsDidChange()            
 
-            case .failure( _):
+            case .failure:
                 self?.viewDelegate?.comicsFetchDidFailed()
             }
         }
@@ -59,7 +59,7 @@ class DetailViewModel: CharacterHandler {
                 self?.character.series = series
                 self?.viewDelegate?.seriesDidChange()
                 
-            case .failure( _):
+            case .failure:
                 self?.viewDelegate?.seriesFetchDidFailed()
             }
         })

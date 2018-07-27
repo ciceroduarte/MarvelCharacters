@@ -8,9 +8,9 @@
 
 import Foundation
 
-protocol HomeViewModelDelegate : class {
-    func charactersDidChange() -> Void
-    func fetchDidFailed() -> Void
+protocol HomeViewModelDelegate: class {
+    func charactersDidChange()
+    func fetchDidFailed()
 }
 
 class HomeViewModel {
@@ -29,7 +29,7 @@ class HomeViewModel {
             switch result {
             case .success(let characters):
                 self?.charactersList.append(contentsOf: characters)
-            case .failure( _):
+            case .failure:
                 self?.viewDelegate?.fetchDidFailed()
             }
         }

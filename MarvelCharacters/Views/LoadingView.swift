@@ -14,7 +14,7 @@ class LoadingView: UIView {
     
     init() {
         
-        activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         
         super.init(frame: CGRect.zero)
         setupViews()

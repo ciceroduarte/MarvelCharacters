@@ -1,5 +1,5 @@
 //
-//  Image.swift
+//  Thumbnail.swift
 //  MarvelCharacters
 //
 //  Created by Cicero on 16/02/17.
@@ -8,22 +8,16 @@
 
 import Foundation
 
-struct Image {
+struct Thumbnail: Decodable {
     
     private let path: String
     private let imageExtension: String
-    
-    init?(withRepresentation representation: [String: Any]?) {
-        
-        guard let path = representation?["path"] as? String,
-            let imageExtension = representation?["extension"] as? String else {
-                return nil
-        }
-        
-        self.path = path
-        self.imageExtension = imageExtension
+
+    private enum CodingKeys: String, CodingKey {
+        case path,
+        imageExtension = "extension"
     }
-    
+
     var url: URL? {
         return URL(string: path + "/standard_amazing." + imageExtension)
     }

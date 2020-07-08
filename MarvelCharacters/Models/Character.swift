@@ -8,35 +8,28 @@
 
 import Foundation
 
-struct Character: Representable {
+struct Character: Decodable {
     
     let name: String
     let characterDescription: String
-    let comicsCollectionURI: URL
-    let seriesCollectionURL: URL
-    let image: Image
+    let thumbnail: Thumbnail
+    let comicsInfo: Comics
+    let seriesInfo: Series
     var comics: [Comic]?
     var series: [Serie]?
-    
-    init? (withRepresentation representation: [String: Any]?) {
-        
-        guard let name = representation?["name"] as? String,
-            let characterDescription = representation?["description"] as? String,
-            let imageRepresentation = representation?["thumbnail"] as? [String: Any],
-            let image = Image(withRepresentation: imageRepresentation),
-            let comicsRepresentation = representation?["comics"] as? [String: Any],
-            let comicsCollectionURIString = comicsRepresentation["collectionURI"] as? String,
-            let comicsCollectionURI = URL(string: comicsCollectionURIString),
-            let seriesRepresentation = representation?["series"] as? [String: Any],
-            let seriesCollectionURIString = seriesRepresentation["collectionURI"] as? String,
-            let seriesCollectionURI = URL(string: seriesCollectionURIString) else {
-                return nil
-        }
-        
-        self.name = name
-        self.characterDescription = characterDescription
-        self.comicsCollectionURI = comicsCollectionURI
-        self.seriesCollectionURL = seriesCollectionURI
-        self.image = image
+
+    var comicsCollectionUrl: URL {
+        return comicsInfo.collectionURI
+    }
+
+    var seriesCollectionUrl: URL {
+        return seriesInfo.collectionURI
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case name, thumbnail
+        case characterDescription = "description"
+        case comicsInfo = "comics"
+        case seriesInfo = "series"
     }
 }

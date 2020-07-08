@@ -35,46 +35,54 @@ class ServiceBase {
             + ServiceParameters.offset + "=" + "\(offset)")
     }
     
-    internal func fetch<T: Representable>(listOf representable: T.Type, withURL url: URL?,
-                                          completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
-        
+    func fetch<T: Decodable>(listOf representable: T.Type,
+                                      withURL url: URL?,
+                                      completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
+
         guard let url = url else {
-            completionHandler(Result.failure(FetchError.invalidURL))
+            completionHandler(.failure(.invalidURL))
             return
         }
         
         if offset != 0 && offset == total {
-            completionHandler(Result.failure(FetchError.limite))
+            completionHandler(.failure(.limite))
             return
         }
         
         task = session.data(with: url) { (data, response, error) -> Void in
             
             guard error == nil else {
-                completionHandler(Result.failure(FetchError.networkFailed))
+                DispatchQueue.main.async {
+                    completionHandler(.failure(.networkFailed))
+                }
                 return
             }
-            
-            DispatchQueue.global(qos: .default).async {
-                
-                guard let response = ServiceResponse(data) else {
-                    completionHandler(Result.failure(FetchError.invalidJSON))
-                    return
-                }
 
-                self.offset = response.offset + response.count
-                self.total = response.total
-                
-                var resultList = [T]()
-                response.results.forEach({ result in
-                    if let result = T(withRepresentation: result) {
-                        resultList.append(result)
-                    }
-                })
-                
-                DispatchQueue.main.sync {
-                    completionHandler(Result.success(resultList))
+            guard let response = ServiceResponse(data) else {
+                DispatchQueue.main.async {
+                    completionHandler(.failure(.invalidJSON))
                 }
+                return
+            }
+
+            self.offset = response.offset + response.count
+            self.total = response.total
+
+            var resultList = [T]()
+            let decoder = JSONDecoder()
+            response.results.forEach {
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: $0, options: .prettyPrinted)
+                    let result = try decoder.decode(T.self, from: jsonData)
+
+                    resultList.append(result)
+                } catch {
+                    print("::: \(error)")
+                }
+            }
+
+            DispatchQueue.main.async {
+                completionHandler(.success(resultList))
             }
         }
         task?.resume()

@@ -8,19 +8,7 @@
 
 import Foundation
 
-struct Comic: Representable {
-    
-    var title: String
-    var image: Image
-    
-    init? (withRepresentation representation: [String: Any]?) {
-        
-        guard let title = representation?["title"] as? String,
-        let imageRepresentation = representation?["thumbnail"] as? [String: Any],
-        let image = Image(withRepresentation: imageRepresentation) else {
-                return nil
-        }
-        self.title = title
-        self.image = image
-    }
+struct Comic: Decodable {
+    let title: String
+    let thumbnail: Thumbnail
 }

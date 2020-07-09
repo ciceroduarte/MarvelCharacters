@@ -12,8 +12,9 @@ import Kingfisher
 
 class ComicCell: UICollectionViewCell, Reusable {
     
-    let name = UILabel()
-    let image = UIImageView()
+    lazy var name = UILabel()
+    lazy var image = UIImageView()
+
     private let imageHeight: CGFloat = 145.0
 
     override init(frame: CGRect) {
@@ -24,13 +25,9 @@ class ComicCell: UICollectionViewCell, Reusable {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
-    
-    func height() -> CGFloat {
-        return imageHeight
-    }
-    
+
     func setupViews() {
         name.font = UIFont.boldSystemFont(ofSize: 16)
         name.numberOfLines = 0

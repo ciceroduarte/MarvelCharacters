@@ -10,6 +10,7 @@
 		0F29DADB0C5B5C20C90F7D18 /* Pods_MarvelCharactersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AA348C36963A9F9243A696 /* Pods_MarvelCharactersTests.framework */; };
 		5590CC3124B68578001E0EE2 /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590CC3024B68578001E0EE2 /* Comics.swift */; };
 		5590CC3324B685C0001E0EE2 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590CC3224B685C0001E0EE2 /* Series.swift */; };
+		5590CC3624B68D47001E0EE2 /* DecodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590CC3524B68D47001E0EE2 /* DecodableHelper.swift */; };
 		6B3E7B7C973C0F367C00E2F7 /* Pods_MarvelCharacters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A3E9A7B0FF0AEA02A0B4F4 /* Pods_MarvelCharacters.framework */; };
 		F40175271E6787D200921AF8 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40175261E6787D200921AF8 /* XCTestCaseExtension.swift */; };
 		F408E9571E74AA9E00B46169 /* ServiceSeriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408E9561E74AA9E00B46169 /* ServiceSeriesTests.swift */; };
@@ -86,6 +87,7 @@
 		51CAC0292C91938E44CC2F77 /* Pods-MarvelCharactersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelCharactersTests/Pods-MarvelCharactersTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5590CC3024B68578001E0EE2 /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
 		5590CC3224B685C0001E0EE2 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		5590CC3524B68D47001E0EE2 /* DecodableHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableHelper.swift; sourceTree = "<group>"; };
 		8505332681D61D01AA24C826 /* Pods-MarvelCharactersUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelCharactersUITests/Pods-MarvelCharactersUITests.release.xcconfig"; sourceTree = "<group>"; };
 		96A3E9A7B0FF0AEA02A0B4F4 /* Pods_MarvelCharacters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharacters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DEEEB173D54566A8211B81 /* Pods-MarvelCharacters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharacters.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelCharacters/Pods-MarvelCharacters.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +187,14 @@
 				CB6A2A3A38EC0D86A0B68D37 /* Pods_MarvelCharactersUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5590CC3424B68D33001E0EE2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5590CC3524B68D47001E0EE2 /* DecodableHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		D0806904C08A450A665C6A44 /* Pods */ = {
@@ -359,6 +369,7 @@
 		F45DD3A11E55180700ABFFBA /* MarvelCharactersTests */ = {
 			isa = PBXGroup;
 			children = (
+				5590CC3424B68D33001E0EE2 /* Helpers */,
 				F4D571F01E68ECF3009BF387 /* Resources */,
 				F40175281E678AB800921AF8 /* ViewControllers */,
 				F48A4A2F1E60F222006E3D2F /* Services */,
@@ -691,6 +702,7 @@
 				F408E9571E74AA9E00B46169 /* ServiceSeriesTests.swift in Sources */,
 				F48A4A2E1E60F14C006E3D2F /* CharacterTests.swift in Sources */,
 				F40175271E6787D200921AF8 /* XCTestCaseExtension.swift in Sources */,
+				5590CC3624B68D47001E0EE2 /* DecodableHelper.swift in Sources */,
 				F47213B11E6F826900C89CDD /* DetailViewSeriesLoadingTest.swift in Sources */,
 				F4D571F41E68F00D009BF387 /* SerieTests.swift in Sources */,
 				F48A4A341E60F246006E3D2F /* MockURLSessionDataTask.swift in Sources */,

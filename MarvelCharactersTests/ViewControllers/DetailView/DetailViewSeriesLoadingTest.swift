@@ -20,17 +20,19 @@ class DetailViewSeriesLoadingTest: KIFTestCase {
             "name": "cicero",
             "description": "description",
             "comics": [
-                "collectionURI": "http://www.google.com.br"
+                "collectionURI": "http://www.google.com.br",
+                "available": 1
             ],
             "series": [
-                "collectionURI": "http://www.google.com.br"
+                "collectionURI": "http://www.google.com.br",
+                "available": 1
             ],
             "thumbnail": [
                 "path": "http://www.google.com.br",
                 "extension": "png"
             ]
             ] as [String: Any]
-        let character = Character(withRepresentation: representation)
+        let character = DecodableHelper.decode(Character.self, dictionary: representation)
         let detailViewModel = DetailViewModel(withCharacter: character!)
         let mockSession = MockURLSession()
         

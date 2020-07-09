@@ -12,47 +12,15 @@ import XCTest
 @testable import MarvelCharacters
 
 class CharacterTests: XCTestCase {
-    
-    // MARK: ivars
-    
-    // MARK: Life Cycle
-    override func setUp() {
-        super.setUp()
+
+    var character: Character? {
+        return DecodableHelper.decode(Character.self, dictionary: representation())
     }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
-    // MARK: Private methods
-    private func representation() -> [String: Any] {
-        let representation = [
-            "name": "cicero",
-            "description": "description",
-            "comics": [
-                "collectionURI": "http://www.google.com.br"
-            ],
-            "series": [
-                "collectionURI": "http://www.google.com.br"
-            ],
-            "thumbnail": [
-                "path": "http://www.google.com.br",
-                "extension": "png"
-            ]
-        ] as [String: Any]
-        return representation
-    }
-    
-    // MARK: Tests
-    func testInitializationWithNilValue() {
-        XCTAssertNil(Character(withRepresentation: nil))
-    }
-    
+
     func testInitializationWithRepresentation() {
-        
-        XCTAssertNotNil(Character(withRepresentation: representation()))
+        XCTAssertNotNil(character)
     }
-    
+
     func testInitializationWithInvalidImageRepresentation() {
         let representation = [
             "name": "cicero",
@@ -61,18 +29,39 @@ class CharacterTests: XCTestCase {
                 "path": "path"
             ]
         ] as [String: Any]
-        XCTAssertNil(Character(withRepresentation: representation))
+
+        XCTAssertNil(DecodableHelper.decode(Character.self, dictionary: representation))
     }
-    
-    func testNameDescriptionAndThumbnail() {
-        let character = Character(withRepresentation: representation())
+
+    func testNameDescriptionAndThumbnail() throws {
+        let character = try XCTUnwrap(self.character)
         let url = URL(string: "http://www.google.com.br/standard_amazing.png")
         let portraitUrl = URL(string: "http://www.google.com.br/portrait_fantastic.png")
-        
-        XCTAssertTrue(character?.name == "cicero")
-        XCTAssertTrue(character?.characterDescription == "description")
-        XCTAssertNotNil(character?.image.url)
-        XCTAssertTrue(character?.image.url?.absoluteString == url?.absoluteString)
-        XCTAssertTrue(character?.image.portraitUrl?.absoluteString == portraitUrl?.absoluteString)
+
+        XCTAssertTrue(character.name == "cicero")
+        XCTAssertTrue(character.characterDescription == "description")
+        XCTAssertNotNil(character.thumbnail.url)
+        XCTAssertTrue(character.thumbnail.url?.absoluteString == url?.absoluteString)
+        XCTAssertTrue(character.thumbnail.portraitUrl?.absoluteString == portraitUrl?.absoluteString)
+    }
+
+    private func representation() -> [String: Any] {
+        let representation = [
+            "name": "cicero",
+            "description": "description",
+            "comics": [
+                "collectionURI": "http://www.google.com.br",
+                "available": 1
+            ],
+            "series": [
+                "collectionURI": "http://www.google.com.br",
+                "available": 1
+            ],
+            "thumbnail": [
+                "path": "http://www.google.com.br",
+                "extension": "png"
+            ]
+        ] as [String: Any]
+        return representation
     }
 }

@@ -12,17 +12,36 @@ import XCTest
 @testable import MarvelCharacters
 
 class ComicTests: XCTestCase {
-    
-    // MARK: Life Cycle
-    override func setUp() {
-        super.setUp()
+
+    var comic: Comic? {
+        return DecodableHelper.decode(Comic.self, dictionary: representation())
     }
-    
-    override func tearDown() {
-        super.tearDown()
+
+    func testInitializationWithRepresentation() {
+        XCTAssertNotNil(comic)
     }
-    
-    // MARK: Private methods
+
+    func testInitializationWithInvalidImageRepresentation() {
+        let representation = [
+            "title": "cicero",
+            "thumbnail": [
+                "path": "path"
+            ]
+            ] as [String: Any]
+        XCTAssertNil(DecodableHelper.decode(Comic.self, dictionary: representation))
+    }
+
+    func testTitleAndThumbnail() throws {
+        let comic = try XCTUnwrap(self.comic)
+        let url = URL(string: "http://www.google.com.br/standard_amazing.png")
+        let portraitUrl = URL(string: "http://www.google.com.br/portrait_fantastic.png")
+
+        XCTAssertTrue(comic.title == "cicero")
+        XCTAssertNotNil(comic.thumbnail.url)
+        XCTAssertTrue(comic.thumbnail.url?.absoluteString == url?.absoluteString)
+        XCTAssertTrue(comic.thumbnail.portraitUrl?.absoluteString == portraitUrl?.absoluteString)
+    }
+
     private func representation() -> [String: Any] {
         let representation = [
             "title": "cicero",
@@ -32,36 +51,5 @@ class ComicTests: XCTestCase {
             ]
             ] as [String: Any]
         return representation
-    }
-    
-    // MARK: Tests
-    func testInitializationWithNilValue() {
-        XCTAssertNil(Comic(withRepresentation: nil))
-    }
-    
-    func testInitializationWithRepresentation() {
-        
-        XCTAssertNotNil(Comic(withRepresentation: representation()))
-    }
-    
-    func testInitializationWithInvalidImageRepresentation() {
-        let representation = [
-            "title": "cicero",
-            "thumbnail": [
-                "path": "path"
-            ]
-            ] as [String: Any]
-        XCTAssertNil(Comic(withRepresentation: representation))
-    }
-    
-    func testTitleAndThumbnail() {
-        let comic = Comic(withRepresentation: representation())
-        let url = URL(string: "http://www.google.com.br/standard_amazing.png")
-        let portraitUrl = URL(string: "http://www.google.com.br/portrait_fantastic.png")
-        
-        XCTAssertTrue(comic?.title == "cicero")
-        XCTAssertNotNil(comic?.image.url)
-        XCTAssertTrue(comic?.image.url?.absoluteString == url?.absoluteString)
-        XCTAssertTrue(comic?.image.portraitUrl?.absoluteString == portraitUrl?.absoluteString)
     }
 }

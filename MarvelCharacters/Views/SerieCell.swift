@@ -12,23 +12,20 @@ import Kingfisher
 
 class SerieCell: UICollectionViewCell, Reusable {
     
-    let name = UILabel()
-    let image = UIImageView()
+    lazy var name = UILabel()
+    lazy var image = UIImageView()
+
     private let imageHeight: CGFloat = 145.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubviews(views: [name, image])
+        addSubviews(views: [name, image])
         setupViews()
         setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func height() -> CGFloat {
-        return imageHeight
+        return nil
     }
     
     func setupViews() {

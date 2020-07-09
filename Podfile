@@ -15,9 +15,4 @@ target 'MarvelCharacters' do
     pod 'KIF', :configurations => ['Debug']
   end
 
-  target 'MarvelCharactersUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

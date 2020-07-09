@@ -36,8 +36,8 @@ class ServiceBase {
     }
     
     func fetch<T: Decodable>(listOf representable: T.Type,
-                                      withURL url: URL?,
-                                      completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
+                             withURL url: URL?,
+                             completionHandler: @escaping (Result<[T], FetchError>) -> Void) {
 
         guard let url = url else {
             completionHandler(.failure(.invalidURL))

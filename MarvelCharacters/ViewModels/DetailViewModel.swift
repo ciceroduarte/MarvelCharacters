@@ -28,17 +28,16 @@ class DetailViewModel: CharacterHandler {
     }
     
     func fetchComics() {
-        
-        if character.comics != nil {
+        guard character.comics == nil else {
             viewDelegate?.comicsDidChange()
             return
         }
-        
-        comicsService.fetch(withURL: character.comicsCollectionURI) { [weak self] result in
+
+        comicsService.fetch(withURL: character.comicsCollectionUrl) { [weak self] result in
             switch result {
             case .success(let comics):
                 self?.character.comics = comics
-                self?.viewDelegate?.comicsDidChange()            
+                self?.viewDelegate?.comicsDidChange()
 
             case .failure:
                 self?.viewDelegate?.comicsFetchDidFailed()
@@ -47,18 +46,17 @@ class DetailViewModel: CharacterHandler {
     }
     
     func fetchSeries() {
-
-        if character.series != nil {
+        guard character.series == nil else {
             viewDelegate?.seriesDidChange()
             return
         }
-        
-        seriesService.fetch(withURL: character.seriesCollectionURL, completionHandler: { [weak self] result in
+
+        seriesService.fetch(withURL: character.seriesCollectionUrl, completionHandler: { [weak self] result in
             switch result {
             case .success(let series):
                 self?.character.series = series
                 self?.viewDelegate?.seriesDidChange()
-                
+
             case .failure:
                 self?.viewDelegate?.seriesFetchDidFailed()
             }
@@ -70,16 +68,16 @@ class DetailViewModel: CharacterHandler {
         seriesService.cancel()
     }
     
-    func numberOfComics () -> Int {
+    func numberOfComics() -> Int {
         return character.comics?.count ?? 0
     }
     
-    func numberOfSeries () -> Int {
+    func numberOfSeries() -> Int {
         return character.series?.count ?? 0
     }
 
     func comicImageUrl(withIndex index: IndexPath) -> URL? {
-        return character.comics?[index.row].image.portraitUrl
+        return character.comics?[index.row].thumbnail.portraitUrl
     }
     
     func comicTitle(withIndex index: IndexPath) -> String {
@@ -87,7 +85,7 @@ class DetailViewModel: CharacterHandler {
     }
     
     func serieImageUrl(withIndex index: IndexPath) -> URL? {
-        return character.series?[index.row].image.portraitUrl
+        return character.series?[index.row].thumbnail.portraitUrl
     }
     
     func serieTitle(withIndex index: IndexPath) -> String {

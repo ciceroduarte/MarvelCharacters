@@ -15,8 +15,8 @@ struct Character: Decodable {
     let thumbnail: Thumbnail
     let comicsInfo: Comics
     let seriesInfo: Series
-    var comics: [Comic]?
-    var series: [Serie]?
+    var comics: [Comic] = []
+    var series: [Serie] = []
 
     var comicsCollectionUrl: URL {
         return comicsInfo.collectionURI

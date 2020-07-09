@@ -28,7 +28,7 @@ class DetailViewModel: CharacterHandler {
     }
     
     func fetchComics() {
-        guard character.comics == nil else {
+        guard character.comics.isEmpty else {
             viewDelegate?.comicsDidChange()
             return
         }
@@ -46,7 +46,7 @@ class DetailViewModel: CharacterHandler {
     }
     
     func fetchSeries() {
-        guard character.series == nil else {
+        guard character.series.isEmpty else {
             viewDelegate?.seriesDidChange()
             return
         }
@@ -69,26 +69,26 @@ class DetailViewModel: CharacterHandler {
     }
     
     func numberOfComics() -> Int {
-        return character.comics?.count ?? 0
+        return character.comics.count
     }
     
     func numberOfSeries() -> Int {
-        return character.series?.count ?? 0
+        return character.series.count
     }
 
     func comicImageUrl(withIndex index: IndexPath) -> URL? {
-        return character.comics?[index.row].thumbnail.portraitUrl
+        return character.comics[index.row].thumbnail.portraitUrl
     }
     
     func comicTitle(withIndex index: IndexPath) -> String {
-        return character.comics?[index.row].title ?? ""
+        return character.comics[index.row].title
     }
     
     func serieImageUrl(withIndex index: IndexPath) -> URL? {
-        return character.series?[index.row].thumbnail.portraitUrl
+        return character.series[index.row].thumbnail.portraitUrl
     }
     
     func serieTitle(withIndex index: IndexPath) -> String {
-        return character.series?[index.row].title ?? ""
+        return character.series[index.row].title
     }
 }

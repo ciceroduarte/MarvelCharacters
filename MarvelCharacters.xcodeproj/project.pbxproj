@@ -11,6 +11,7 @@
 		55272D5024B90D95008AA67D /* TryAgainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55272D4F24B90D95008AA67D /* TryAgainViewTests.swift */; };
 		55272D5224B90E0C008AA67D /* HomeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55272D5124B90E0C008AA67D /* HomeViewTests.swift */; };
 		55272D5524B91801008AA67D /* UICollectionViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55272D5424B91801008AA67D /* UICollectionViewExtensionTests.swift */; };
+		55272D5724B92271008AA67D /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55272D5624B92271008AA67D /* HomeViewControllerTests.swift */; };
 		5545F1B324B7D4FB000A557A /* SerieCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545F1B224B7D4FB000A557A /* SerieCellTests.swift */; };
 		5545F1B524B7D923000A557A /* ComicCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545F1B424B7D923000A557A /* ComicCellTests.swift */; };
 		5545F1B724B7DEAF000A557A /* CharacterCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545F1B624B7DEAF000A557A /* CharacterCellTests.swift */; };
@@ -96,6 +97,7 @@
 		55272D4F24B90D95008AA67D /* TryAgainViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryAgainViewTests.swift; sourceTree = "<group>"; };
 		55272D5124B90E0C008AA67D /* HomeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTests.swift; sourceTree = "<group>"; };
 		55272D5424B91801008AA67D /* UICollectionViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensionTests.swift; sourceTree = "<group>"; };
+		55272D5624B92271008AA67D /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		5545F1B224B7D4FB000A557A /* SerieCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieCellTests.swift; sourceTree = "<group>"; };
 		5545F1B424B7D923000A557A /* ComicCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCellTests.swift; sourceTree = "<group>"; };
 		5545F1B624B7DEAF000A557A /* CharacterCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCellTests.swift; sourceTree = "<group>"; };
@@ -251,20 +253,21 @@
 			isa = PBXGroup;
 			children = (
 				F47213B91E6F871E00C89CDD /* Transition */,
-				F47213AD1E6F79E800C89CDD /* DetailView */,
-				F41C578F1E6B7CEC004CDFDC /* HomeView */,
+				F47213AD1E6F79E800C89CDD /* DetailViewController */,
+				F41C578F1E6B7CEC004CDFDC /* HomeViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		F41C578F1E6B7CEC004CDFDC /* HomeView */ = {
+		F41C578F1E6B7CEC004CDFDC /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
+				55272D5624B92271008AA67D /* HomeViewControllerTests.swift */,
 				F41C57921E6B7D61004CDFDC /* HomeViewLoadingTest.swift */,
 				F41C57941E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift */,
 				F41C57961E6B7F0F004CDFDC /* HomeViewEmptyDataTest.swift */,
 			);
-			path = HomeView;
+			path = HomeViewController;
 			sourceTree = "<group>";
 		};
 		F427ED3F1E56615C008B72D7 /* Models */ = {
@@ -419,13 +422,13 @@
 			path = MarvelCharactersTests;
 			sourceTree = "<group>";
 		};
-		F47213AD1E6F79E800C89CDD /* DetailView */ = {
+		F47213AD1E6F79E800C89CDD /* DetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				F47213AE1E6F7B7D00C89CDD /* DetailViewComicsLoadingTest.swift */,
 				F47213B01E6F826900C89CDD /* DetailViewSeriesLoadingTest.swift */,
 			);
-			path = DetailView;
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
 		F47213B21E6F83AB00C89CDD /* Transition */ = {
@@ -734,6 +737,7 @@
 				F47213BB1E6F874B00C89CDD /* TransitionTest.swift in Sources */,
 				F4D571F21E68EDA0009BF387 /* ComicTests.swift in Sources */,
 				55272D5224B90E0C008AA67D /* HomeViewTests.swift in Sources */,
+				55272D5724B92271008AA67D /* HomeViewControllerTests.swift in Sources */,
 				F41C57951E6B7DB5004CDFDC /* HomeViewTryAgainTest.swift in Sources */,
 				55272D5024B90D95008AA67D /* TryAgainViewTests.swift in Sources */,
 				F47213AF1E6F7B7D00C89CDD /* DetailViewComicsLoadingTest.swift in Sources */,

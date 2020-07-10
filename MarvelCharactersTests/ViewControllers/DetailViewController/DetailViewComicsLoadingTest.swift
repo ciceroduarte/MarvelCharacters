@@ -14,7 +14,6 @@ class DetailViewComicsLoadingTest: KIFTestCase {
 
     override func beforeEach() {
         stopTestsOnFirstBigFailure = true
-
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let representation = [
             "name": "cicero",
@@ -50,14 +49,6 @@ class DetailViewComicsLoadingTest: KIFTestCase {
         let detailViewController = DetailViewController(withViewModel: detailViewModel)
         let navigationController = UINavigationController(rootViewController: detailViewController)
         appDelegate?.window?.rootViewController = navigationController
-    }
-
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
     }
 
     func testCharacterDetail() {

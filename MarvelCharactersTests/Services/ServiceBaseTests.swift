@@ -117,4 +117,15 @@ class ServiceBaseTests: XCTestCase {
             }
         }
     }
+
+    func testWithError() {
+        session.nextError = .networkFailed
+        sut.fetch(listOf: Character.self, withURL: url) { (response) in
+            switch response {
+            case .failure(let error):
+                XCTAssertEqual(error, .networkFailed)
+            default: break
+            }
+        }
+    }
 }

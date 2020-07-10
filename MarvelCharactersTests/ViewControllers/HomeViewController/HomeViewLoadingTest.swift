@@ -13,8 +13,6 @@ import KIF
 class HomeViewLoadingTest: KIFTestCase {
 
     override func beforeEach() {
-        stopTestsOnFirstBigFailure = true
-
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let homeViewModel = HomeViewModel()
         let mockSession = MockURLSession()

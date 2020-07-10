@@ -12,17 +12,17 @@ import Kingfisher
 
 class CharacterCell: UICollectionViewCell, Reusable {
 
-    let characterView = CharacterView()
+    lazy var characterView = CharacterView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubviews(views: [characterView])
+        contentView.addSubviews(views: [characterView])
         setupViews()
         setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     func height(forWidth width: CGFloat) -> CGFloat {

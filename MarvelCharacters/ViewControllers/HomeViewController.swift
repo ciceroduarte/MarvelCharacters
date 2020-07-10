@@ -55,11 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         homeViewModel.viewDelegate = self
         homeViewModel.loadCharacters()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+
     // MARK: Actions
     @objc func tryAgain() {
         contentView.showLoadingView()

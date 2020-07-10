@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 import DZNEmptyDataSet
 
-class DetailViewController: UIViewController, UICollectionViewDataSource,
-UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DetailViewModelDelegate {
+class DetailViewController: UIViewController {
 
     enum Option: Int {
         case comics
@@ -20,13 +19,12 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
     
     let detailViewModel: DetailViewModel
     
-    var contentView: DetailView {
-        guard let detailView = view as? DetailView else {
-            fatalError("Invalid DetailView")
-        }
-        return detailView
+    lazy var contentView = DetailView()
+
+    var selectedOption: Option {
+        return Option(rawValue: contentView.segmentedControl.selectedSegmentIndex) ?? .comics
     }
-    
+
     init(withViewModel detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
         
@@ -36,11 +34,11 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     override func loadView() {
-        view = DetailView()
+        view = contentView
     }
     
     override func viewDidLoad() {
@@ -74,9 +72,10 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
     }
     
     func fetch(withOption option: Int) {
-        if option == 0 {
+        switch selectedOption {
+        case .comics:
             detailViewModel.fetchComics()
-        } else {
+        case .series:
             detailViewModel.fetchSeries()
         }
     }
@@ -86,68 +85,6 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
         contentView.tryAgainView.hide()
         contentView.loadingView.show()
         fetch(withOption: contentView.segmentedControl.selectedSegmentIndex)
-    }
-    
-    // MARK: DZNEmptyDataSetSource
-    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString {
-        return LocalizedStrings.emptyData
-    }
-    
-    // MARK: UICollectionViewDataSource
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return selectedOption() == .comics ? detailViewModel.numberOfComics() : detailViewModel.numberOfSeries()
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView,
-                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if selectedOption() == .comics {
-            let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as ComicCell
-            cell.config(withImage: detailViewModel.comicImageUrl(withIndex: indexPath),
-                        name: detailViewModel.comicTitle(withIndex: indexPath))
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as SerieCell
-            cell.config(withImage: detailViewModel.serieImageUrl(withIndex: indexPath),
-                        name: detailViewModel.serieTitle(withIndex: indexPath))
-            return cell
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: contentView.collectionView.frame.width, height: 145)
-    }
-        
-    // MARK: - DetailViewModelDelegate
-    func comicsDidChange() {
-        if selectedOption() == .comics {
-            reloadContent()
-        }
-    }
-    
-    func seriesDidChange() {
-        if selectedOption() == .series {
-            reloadContent()
-        }
-    }
-    
-    func comicsFetchDidFailed() {
-        if selectedOption() == .comics {
-            showTryAgain()
-        }
-    }
-    
-    func seriesFetchDidFailed() {
-        if selectedOption() == .series {
-            showTryAgain()
-        }
-    }
-
-    func selectedOption() -> Option {
-        return Option(rawValue: contentView.segmentedControl.selectedSegmentIndex) ?? .comics
     }
     
     func reloadContent() {
@@ -163,4 +100,80 @@ UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSou
         contentView.loadingView.hide()
     }
     
+}
+
+extension DetailViewController: DetailViewModelDelegate {
+
+    func comicsDidChange() {
+        if selectedOption == .comics {
+            reloadContent()
+        }
+    }
+
+    func seriesDidChange() {
+        if selectedOption == .series {
+            reloadContent()
+        }
+    }
+
+    func comicsFetchDidFailed() {
+        if selectedOption == .comics {
+            showTryAgain()
+        }
+    }
+
+    func seriesFetchDidFailed() {
+        if selectedOption == .series {
+            showTryAgain()
+        }
+    }
+}
+
+extension DetailViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedOption == .comics ? detailViewModel.numberOfComics() : detailViewModel.numberOfSeries()
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let cell: UICollectionViewCell
+
+        switch selectedOption {
+        case .comics:
+            cell = comicCell(forIndexPath: indexPath)
+        case .series:
+            cell = serieCell(forIndexPath: indexPath)
+        }
+        return cell
+    }
+
+    private func comicCell(forIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = contentView.collectionView.dequeueReusableCell(forIndexPath: indexPath) as ComicCell
+        cell.config(withImage: detailViewModel.comicImageUrl(withIndex: indexPath),
+                    name: detailViewModel.comicTitle(withIndex: indexPath))
+        return cell
+    }
+
+    private func serieCell(forIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = contentView.collectionView.dequeueReusableCell(forIndexPath: indexPath) as SerieCell
+        cell.config(withImage: detailViewModel.serieImageUrl(withIndex: indexPath),
+                    name: detailViewModel.serieTitle(withIndex: indexPath))
+        return cell
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: contentView.collectionView.frame.width, height: 145)
+    }
+}
+
+extension DetailViewController: DZNEmptyDataSetSource {
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString {
+        return LocalizedStrings.emptyData
+    }
 }

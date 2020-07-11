@@ -17,7 +17,7 @@ class TransitionTest: KIFTestCase {
 
     override func beforeEach() {
         let mockSession = MockURLSession()
-        mockSession.nextData = NetworkingHelper().response(.valid)
+        mockSession.nextData = NetworkingHelper().response(of: .characterList, status: .valid)
 
         let homeViewModel = HomeViewModel()
         homeViewModel.charactersService.session = mockSession
@@ -31,13 +31,7 @@ class TransitionTest: KIFTestCase {
     }
 
     func testTransition() {
-        guard let collectionView = tester()
-            .waitForView(withAccessibilityLabel: "collectionView") as? UICollectionView else {
-                XCTFail("CollectionView not found")
-                return
-        }
-
-        XCTAssertNotNil(collectionView)
+        let collectionView = tester().waitForView(withAccessibilityLabel: "collectionView") as? UICollectionView
 
         let indexPath = IndexPath(row: 0, section: 0)
         tester().tapItem(at: indexPath, in: collectionView)

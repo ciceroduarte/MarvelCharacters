@@ -8,16 +8,22 @@
 
 import Foundation
 
-enum Reponse: String {
+enum Status: String {
     case valid = "ValidResponse"
     case invalid = "InvalidReponse"
     case empty = "EmptyResponse"
 }
 
+enum Service: String {
+    case characterList = "CharacterList"
+    case characterDetail = "CharacterDetail"
+}
+
 class NetworkingHelper {
 
-    func response(_ response: Reponse) -> Data {
-        guard let path = Bundle(for: type(of: self)).url(forResource: response.rawValue, withExtension: "json"),
+    func response(of service: Service, status: Status) -> Data {
+        let file = service.rawValue + status.rawValue
+        guard let path = Bundle(for: type(of: self)).url(forResource: file, withExtension: "json"),
             let result = try? Data(contentsOf: path) else { return Data() }
         return result
     }

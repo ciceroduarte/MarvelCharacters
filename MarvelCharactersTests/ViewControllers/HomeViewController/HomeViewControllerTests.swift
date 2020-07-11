@@ -29,7 +29,7 @@ class HomeViewControllerTests: KIFTestCase {
     }
 
     func testCharacterDetail() {
-        mockSession.nextData = NetworkingHelper().response(.valid)
+        mockSession.nextData = NetworkingHelper().response(of: .characterList, status: .valid)
 
         let collectionView = tester().waitForView(withAccessibilityLabel: "collectionView") as? UICollectionView
         let cell = tester().waitForCell(at: IndexPath(row: 0, section: 0), in: collectionView)
@@ -38,13 +38,13 @@ class HomeViewControllerTests: KIFTestCase {
     }
 
     func testTryAgain() {
-        mockSession.nextData = NetworkingHelper().response(.invalid)
+        mockSession.nextData = NetworkingHelper().response(of: .characterList, status: .invalid)
 
         tester().tapView(withAccessibilityLabel: LocalizedStrings.tryAgain)
     }
 
     func testEmptyData() {
-        mockSession.nextData = NetworkingHelper().response(.empty)
+        mockSession.nextData = NetworkingHelper().response(of: .characterList, status: .empty)
 
         let emptyData = tester().waitForView(withAccessibilityLabel: LocalizedStrings.emptyData.string)
 

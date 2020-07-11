@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
     lazy var contentView = DetailView()
 
     var selectedOption: Option {
-        return Option(rawValue: contentView.segmentedControl.selectedSegmentIndex) ?? .comics
+        return contentView.segmentedControl.selectedSegmentIndex == 0 ? .comics : .series
     }
 
     init(withViewModel detailViewModel: DetailViewModel) {

@@ -65,7 +65,7 @@ class ServiceBaseTests: XCTestCase {
         
         let exp = expectation(description: "Invalid response not nil")
 
-        session.nextData = NetworkingHelper().response(.invalid)
+        session.nextData = NetworkingHelper().response(of: .characterList, status: .invalid)
         sut.fetch(listOf: Character.self, withURL: url) { (response) in
             switch response {
             case .success(let characters):
@@ -83,7 +83,7 @@ class ServiceBaseTests: XCTestCase {
         
         let exp = expectation(description: "Invalid response")
 
-        session.nextData = NetworkingHelper().response(.valid)
+        session.nextData = NetworkingHelper().response(of: .characterList, status: .valid)
         sut.fetch(listOf: Character.self, withURL: url) { (response) in
             switch response {
             case .success(let characters):

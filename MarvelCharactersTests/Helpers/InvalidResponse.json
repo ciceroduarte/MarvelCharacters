@@ -1,0 +1,23 @@
+{
+    "data": {
+        "offset": 0,
+        "limit": 1,
+        "total": 1,
+        "count": 1,
+        "results": [
+            {
+                "name": "cicero",
+                "description": "description",
+                "series": {
+                    "collectionURI": "http://www.google.com.br",
+                    "available": 1
+                },
+                "thumbnail": {
+                    "path": "http://www.google.com.br",
+                    "extension": "png"
+                }
+            }
+        ]
+    }
+}
+

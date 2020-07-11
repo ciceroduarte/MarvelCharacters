@@ -9,9 +9,45 @@
 import XCTest
 @testable import MarvelCharacters
 
-class HomeViewControllerTests: XCTestCase {
+class HomeViewControllerTests: KIFTestCase {
+
+    let mockSession = MockURLSession()
+
+    override func beforeEach() {
+        let homeViewModel = HomeViewModel()
+        homeViewModel.charactersService.session = mockSession
+
+        let homeViewController = HomeViewController(withHomeViewModel: homeViewModel)
+        let navigationController = UINavigationController(rootViewController: homeViewController)
+
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window?.rootViewController = navigationController
+    }
 
     func testInitWithCoderShouldBeNil() {
         XCTAssertNil(HomeViewController(coder: NSCoder()))
+    }
+
+    func testCharacterDetail() {
+        mockSession.nextData = NetworkingHelper().response(.valid)
+
+        let collectionView = tester().waitForView(withAccessibilityLabel: "collectionView") as? UICollectionView
+        let cell = tester().waitForCell(at: IndexPath(row: 0, section: 0), in: collectionView)
+
+        XCTAssertNotNil(cell)
+    }
+
+    func testTryAgain() {
+        mockSession.nextData = NetworkingHelper().response(.invalid)
+
+        tester().tapView(withAccessibilityLabel: LocalizedStrings.tryAgain)
+    }
+
+    func testEmptyData() {
+        mockSession.nextData = NetworkingHelper().response(.empty)
+
+        let emptyData = tester().waitForView(withAccessibilityLabel: LocalizedStrings.emptyData.string)
+
+        XCTAssertNotNil(emptyData)
     }
 }

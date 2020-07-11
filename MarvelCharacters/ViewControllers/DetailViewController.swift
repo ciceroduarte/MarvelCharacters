@@ -13,8 +13,7 @@ import DZNEmptyDataSet
 class DetailViewController: UIViewController {
 
     enum Option: Int {
-        case comics
-        case series
+        case comics, series
     }
     
     let detailViewModel: DetailViewModel

@@ -64,18 +64,14 @@ class ServiceBaseTests: XCTestCase {
     func testInvalidResponse() {
         
         let exp = expectation(description: "Invalid response not nil")
-        
-        let expectedData = ("{\"data\":{ \"offset\": 0, \"limit\": 20, \"total\": 30920," +
-            "\"count\": 20,\"results\": [{\"invalid_name\": \"cicero\", \"description\": \"description\"," +
-            "\"thumbnail\":{ \"path\": \"http://www.google.com.br\", \"extension\": \"png\" } }]}}"
-            ).data(using: String.Encoding.utf8)
-        session.nextData = expectedData
+
+        session.nextData = NetworkingHelper().response(.invalid)
         sut.fetch(listOf: Character.self, withURL: url) { (response) in
             switch response {
             case .success(let characters):
                 XCTAssertEqual(characters.count, 0)
             case .failure(let error):
-                XCTAssertNil(error)
+                XCTAssertTrue(error == .invalidJSON)
             }
             exp.fulfill()
         }
@@ -86,18 +82,12 @@ class ServiceBaseTests: XCTestCase {
     func testValidResponse() {
         
         let exp = expectation(description: "Invalid response")
-        
-        let expectedData = ("{\"data\": { \"offset\": 0, \"limit\": 20, \"total\": 30920," +
-        "\"count\": 20, \"results\": [{\"name\": \"cicero\", \"description\": \"description\"," +
-            "\"comics\": { \"collectionURI\": \"http://www.google.com.br\" }," +
-            "\"series\": { \"collectionURI\": \"http://www.google.com.br\" }," +
-        "\"thumbnail\":{ \"path\": \"http://www.google.com.br\", \"extension\": \"png\"} }]}}"
-            ).data(using: String.Encoding.utf8)
-        session.nextData = expectedData
+
+        session.nextData = NetworkingHelper().response(.valid)
         sut.fetch(listOf: Character.self, withURL: url) { (response) in
             switch response {
             case .success(let characters):
-                XCTAssertNotNil(characters)
+                XCTAssertFalse(characters.isEmpty)
             case .failure(let error):
                 XCTAssertNil(error)
             }

@@ -71,14 +71,10 @@ class ServiceBase {
             var resultList = [T]()
             let decoder = JSONDecoder()
             response.results.forEach {
-                do {
-                    let jsonData = try JSONSerialization.data(withJSONObject: $0, options: .prettyPrinted)
-                    let result = try decoder.decode(T.self, from: jsonData)
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: $0, options: .prettyPrinted),
+                    let result = try? decoder.decode(T.self, from: jsonData) else { return }
 
-                    resultList.append(result)
-                } catch {
-                    print("::: \(error)")
-                }
+                resultList.append(result)
             }
 
             DispatchQueue.main.async {

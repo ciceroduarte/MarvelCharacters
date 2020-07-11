@@ -16,27 +16,17 @@ class TransitionTest: KIFTestCase {
     var navigationController: UINavigationController?
 
     override func beforeEach() {
-        stopTestsOnFirstBigFailure = true
-
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let mockSession = MockURLSession()
+        mockSession.nextData = NetworkingHelper().response(.valid)
 
         let homeViewModel = HomeViewModel()
-        let mockSession = MockURLSession()
-
-        let expectedData = ("""
-            { "data": { "offset": 0, "limit": 20, "total": 30920,
-            "count": 20, "results": [{"name": "cicero", "description": "description",
-            "comics": { "collectionURI": "http://www.google.com.br\", "available": 1 },
-            "series": { "collectionURI": "http://www.google.com.br\", "available": 1 },
-            "thumbnail":{ "path": "http://www.google.com.br", "extension": "png"} }]}}
-        """).data(using: String.Encoding.utf8)
-        mockSession.nextData = expectedData
-
         homeViewModel.charactersService.session = mockSession
 
         let homeViewController = HomeViewController(withHomeViewModel: homeViewModel)
         navigationController = UINavigationController(rootViewController: homeViewController)
         navigationController?.delegate = navigationDelegate
+
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.window?.rootViewController = navigationController
     }
 

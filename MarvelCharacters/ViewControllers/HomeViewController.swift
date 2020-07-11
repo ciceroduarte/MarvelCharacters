@@ -35,17 +35,15 @@ class HomeViewController: UIViewController {
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
         contentView.collectionView.emptyDataSetSource = self
+        (contentView.collectionView.collectionViewLayout as? DynamicHeightLayout)?.delegate = self
+
         contentView.collectionView.register(CharacterCell.self)
+
+        contentView.tryAgainView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
         contentView.collectionView.addInfiniteScroll { [weak self] _ -> Void in
             self?.homeViewModel.loadCharacters()
         }
-        
-        if let layout = contentView.collectionView.collectionViewLayout as? DynamicHeightLayout {
-            layout.delegate = self
-        }
-        
-        contentView.tryAgainView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
-        
+
         homeViewModel.viewDelegate = self
         homeViewModel.loadCharacters()
     }

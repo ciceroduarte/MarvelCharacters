@@ -25,4 +25,18 @@ class TransitionController: NSObject, UIViewControllerAnimatedTransitioning {
             from(detail, toHome: home, with: transitionContext)
         }
     }
+
+    func imageView(fromCharacterCell cell: CharacterCell) -> UIImageView {
+        let image = UIImageView(frame: .zero)
+
+        image.image = cell.characterView.image.image
+        image.frame = cell.characterView.image.frame
+        image.layer.cornerRadius = cell.characterView.image.layer.cornerRadius
+        image.layer.borderWidth = cell.characterView.image.layer.borderWidth
+        image.layer.borderColor = cell.characterView.image.layer.borderColor
+        image.clipsToBounds = cell.characterView.image.clipsToBounds
+        image.backgroundColor = cell.characterView.image.backgroundColor
+
+        return image
+    }
 }

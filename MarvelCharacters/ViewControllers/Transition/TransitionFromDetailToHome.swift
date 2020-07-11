@@ -15,52 +15,35 @@ extension TransitionController {
               with transitionContext: UIViewControllerContextTransitioning) {
         
         let collectionView = home.contentView.collectionView
-        
-        guard let index = collectionView.indexPathsForSelectedItems?.first,
+
+        guard let index = home.lastSelectedIndexPath,
             let cell = collectionView.cellForItem(at: index) as? CharacterCell,
             let attributes = collectionView.layoutAttributesForItem(at: index) else {
-
-                transitionContext.containerView.addSubview(home.view)
                 transitionContext.completeTransition(true)
                 return
         }
         
         home.view.frame = transitionContext.finalFrame(for: home)
         home.view.alpha = 0.0
-        
-        transitionContext.containerView.addSubview(home.view)
-        
-        let cellFrame = collectionView.convert(attributes.frame, to: collectionView.superview)
-        let image = UIImageView(frame: CGRect.zero)
-        image.image = cell.characterView.image.image
-        image.frame = cell.characterView.image.frame
-        image.layer.cornerRadius = cell.characterView.image.layer.cornerRadius
-        image.layer.borderWidth = cell.characterView.image.layer.borderWidth
-        image.layer.borderColor = cell.characterView.image.layer.borderColor
-        image.clipsToBounds = true
-        image.backgroundColor = .clear
 
-        let navigationBarHeight = detail.navigationController?.navigationBar.frame.height ?? 0.0
-        let topBarHeight = UIApplication.shared.statusBarFrame.size.height + navigationBarHeight
+        let cellOrigin = collectionView.convert(attributes.frame.origin, to: collectionView.superview)
+        let contentViewY = detail.contentView.frame.origin.y
 
-        let originalFrame = CGRect(x: detail.contentView.characterView.image.frame.origin.x,
-                                   y: detail.contentView.characterView.image.frame.origin.y + topBarHeight,
-                                   width: detail.contentView.characterView.image.frame.size.width,
-                                   height: detail.contentView.characterView.image.frame.size.height)
-        
-        image.frame = originalFrame
+        let image = imageView(fromCharacterCell: cell)
+        image.frame.origin = CGPoint(x: detail.contentView.characterView.image.frame.origin.x,
+                              y: detail.contentView.characterView.image.frame.origin.y + contentViewY)
         
         detail.contentView.characterView.image.isHidden = true
         cell.characterView.image.isHidden = true
         collectionView.isHidden = false
-        
+
+        transitionContext.containerView.addSubview(home.view)
         transitionContext.containerView.addSubview(image)
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-            image.frame = CGRect(x: cellFrame.origin.x + cell.characterView.image.frame.origin.x,
-                                         y: cellFrame.origin.y + cell.characterView.image.frame.origin.y + topBarHeight,
-                                         width: detail.contentView.characterView.image.frame.size.width,
-                                         height: detail.contentView.characterView.image.frame.size.height)
+            image.frame.origin = CGPoint(x: cellOrigin.x + cell.characterView.image.frame.origin.x,
+                                         y: cellOrigin.y + cell.characterView.image.frame.origin.y + contentViewY)
+
             home.view.alpha = 1.0
         }, completion: { _ in
             image.removeFromSuperview()

@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
     
     lazy var contentView = HomeView()
 
+    var lastSelectedIndexPath: IndexPath?
+
     init(withHomeViewModel homeViewModel: HomeViewModel) {
         self.homeViewModel = homeViewModel
         super.init(nibName: nil, bundle: nil)
@@ -69,7 +71,7 @@ extension HomeViewController: HomeViewModelDelegate {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-
+        lastSelectedIndexPath = indexPath
         let detailViewController = DetailViewController(withViewModel:
             homeViewModel.detailViewModel(for: indexPath))
         navigationController?.pushViewController(detailViewController, animated: true)

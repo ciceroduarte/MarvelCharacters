@@ -12,7 +12,7 @@ class CharacterView: UIView {
     
     let name = UILabel()
     let image = UIImageView()
-    private let imageHeight: CGFloat = 145.0
+    private let imageWidthHeight: CGFloat = 145.0
     
     convenience init() {
         self.init(frame: CGRect.zero)
@@ -31,7 +31,7 @@ class CharacterView: UIView {
     
     func height(forWidth width: CGFloat) -> CGFloat {
         let marginCount = CGFloat(Layout.margin * 3)
-        return CGFloat(marginCount + name.height(forWidth: width - CGFloat(Layout.margin * 2)) + imageHeight)
+        return CGFloat(marginCount + name.height(forWidth: width - CGFloat(Layout.margin * 2)) + imageWidthHeight)
     }
     
     func setupViews() {
@@ -40,7 +40,7 @@ class CharacterView: UIView {
         name.textAlignment = .center
         name.textColor = .black
         
-        image.layer.cornerRadius = imageHeight / 2.0
+        image.layer.cornerRadius = imageWidthHeight / 2.0
         image.layer.borderWidth = 0.6
         image.layer.borderColor = UIColor.black.cgColor
         image.clipsToBounds = true
@@ -49,23 +49,23 @@ class CharacterView: UIView {
     }
     
     func setupConstraints() {
-        
-        image.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(Layout.margin)
-            make.centerX.equalToSuperview()
-            make.height.width.equalTo(imageHeight)
-        }
-        
-        name.snp.makeConstraints { make in
-            make.top.equalTo(image.snp.bottom).offset(Layout.margin)
-            make.left.equalToSuperview().offset(Layout.margin)
-            make.right.equalToSuperview().inset(Layout.margin)
-            make.bottom.lessThanOrEqualToSuperview().inset(Layout.margin)
-        }
+        image.active([
+            image.topAnchor.constraint(equalTo: topAnchor, constant: Layout.margin),
+            image.centerXAnchor.constraint(equalTo: centerXAnchor),
+            image.widthAnchor.constraint(equalToConstant: imageWidthHeight),
+            image.heightAnchor.constraint(equalToConstant: imageWidthHeight)
+        ])
+
+        name.active([
+            name.topAnchor.constraint(equalTo: image.bottomAnchor, constant: Layout.margin),
+            name.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.margin),
+            name.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.margin),
+            name.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: Layout.margin)
+        ])
     }
     
     func config(withViewModel viewModel: CharacterCellViewModel) {
         name.text = viewModel.characterName()
-        image.kf.setImage(with: viewModel.characterImage())
+        image.setImage(with: viewModel.characterImage())
     }
 }

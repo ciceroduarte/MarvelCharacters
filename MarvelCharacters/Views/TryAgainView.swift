@@ -41,12 +41,12 @@ class TryAgainView: UIView {
     }
     
     func setupConstraints() {
-        
-        tryAgainButton.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().offset(20)
-            make.right.equalToSuperview().inset(20)
-            make.centerX.centerY.equalToSuperview()
-        }
+        let margin: CGFloat = 20.0
+        tryAgainButton.active([
+            tryAgainButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
+            tryAgainButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin),
+            tryAgainButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
     
     func show() {

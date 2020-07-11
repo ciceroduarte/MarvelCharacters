@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SnapKit
-import Kingfisher
 
 class ComicCell: UICollectionViewCell, Reusable {
     
@@ -16,6 +14,7 @@ class ComicCell: UICollectionViewCell, Reusable {
     lazy var image = UIImageView()
 
     private let imageHeight: CGFloat = 145.0
+    private let imageWidth: CGFloat = 97.0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,24 +41,24 @@ class ComicCell: UICollectionViewCell, Reusable {
     }
     
     func setupConstraints() {
-        image.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(Layout.margin)
-            make.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(Layout.margin)
-            make.height.equalTo(imageHeight)
-            make.width.equalTo(97)
-        }
-        
-        name.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(Layout.margin)
-            make.left.equalTo(image.snp.right).offset(Layout.margin)
-            make.right.equalToSuperview().inset(Layout.margin)
-            make.bottom.lessThanOrEqualToSuperview().inset(Layout.margin)
-        }
+        image.active([
+            image.topAnchor.constraint(equalTo: topAnchor, constant: Layout.margin),
+            image.bottomAnchor.constraint(equalTo: bottomAnchor),
+            image.widthAnchor.constraint(equalToConstant: imageWidth),
+            image.heightAnchor.constraint(equalToConstant: imageHeight),
+            image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.margin)
+        ])
+
+        name.active([
+            name.topAnchor.constraint(equalTo: topAnchor, constant: Layout.margin),
+            name.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: Layout.margin),
+            name.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.margin),
+            name.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: Layout.margin)
+        ])
     }
     
     func config(withImage imageUrl: URL?, name: String) {
         self.name.text = name
-        image.kf.setImage(with: imageUrl)
+        image.setImage(with: imageUrl)
     }
 }

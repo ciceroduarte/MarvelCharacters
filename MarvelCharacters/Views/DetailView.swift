@@ -52,31 +52,40 @@ class DetailView: UIView {
     func setupConstraints() {
         
         let characterViewHeight = characterView.height(forWidth: characterView.superview?.frame.width ?? 150.0)
-        
-        characterView.snp.makeConstraints { make in
-            make.left.right.top.equalToSuperview()
-            make.height.equalTo(characterViewHeight)
-        }
-        
-        segmentedControl.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview().inset(8)
-            make.top.equalTo(characterView.snp.bottom)
-        }
-        
-        collectionView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(8)
-            make.bottom.equalToSuperview()
-            make.top.equalTo(segmentedControl.snp.bottom).offset(1)
-        }
-        
-        loadingView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(segmentedControl.snp.bottom).offset(1)
-        }
-        
-        tryAgainView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(segmentedControl.snp.bottom).offset(1)
-        }
+        let margin: CGFloat = 8.0
+
+        characterView.active([
+            characterView.topAnchor.constraint(equalTo: topAnchor),
+            characterView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            characterView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            characterView.heightAnchor.constraint(equalToConstant: characterViewHeight)
+        ])
+
+        segmentedControl.active([
+            segmentedControl.topAnchor.constraint(equalTo: characterView.bottomAnchor),
+            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
+            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin)
+        ])
+
+        collectionView.active([
+            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin)
+        ])
+
+        loadingView.active([
+            loadingView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+
+        tryAgainView.active([
+            tryAgainView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            tryAgainView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tryAgainView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tryAgainView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
 }

@@ -57,17 +57,8 @@ class HomeView: UIView {
     }
     
     func setupConstraints() {
-        
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        loadingView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        tryAgainView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        collectionView.fillSuperview()
+        loadingView.fillSuperview()
+        tryAgainView.fillSuperview()
     }
 }

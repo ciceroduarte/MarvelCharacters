@@ -9,7 +9,7 @@
 import Foundation
 
 struct Layout {
-    static let margin = 8
+    static let margin: CGFloat = 8.0
 }
 
 struct Keys {

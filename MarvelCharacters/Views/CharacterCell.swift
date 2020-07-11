@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SnapKit
-import Kingfisher
 
 class CharacterCell: UICollectionViewCell, Reusable {
 
@@ -34,9 +32,7 @@ class CharacterCell: UICollectionViewCell, Reusable {
     }
     
     func setupConstraints() {
-        characterView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        characterView.fillSuperview()
     }
     
     func config(withViewModel viewModel: CharacterCellViewModel) {

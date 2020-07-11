@@ -14,4 +14,19 @@ extension UIView {
             addSubview(view)
         }
     }
+
+    func fillSuperview() {
+        guard let superview = superview else { return }
+        active([
+            trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+            leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+            topAnchor.constraint(equalTo: superview.topAnchor),
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+        ])
+    }
+
+    func active(_ constraints: [NSLayoutConstraint]) {
+        translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(constraints)
+    }
 }

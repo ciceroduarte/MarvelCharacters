@@ -56,7 +56,7 @@ class DetailViewController: UIViewController {
         
         let characterView = contentView.characterView
         navigationItem.title = detailViewModel.characterName().uppercased()
-        characterView.image.kf.setImage(with: detailViewModel.characterImage())
+        characterView.image.setImage(with: detailViewModel.characterImage())
         
         contentView.segmentedControl.addTarget(self, action: #selector(segmentedControlerDidChange), for: .valueChanged)
         contentView.tryAgainView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)

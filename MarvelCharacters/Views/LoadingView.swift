@@ -32,10 +32,10 @@ class LoadingView: UIView {
     }
     
     private func setupConstraints() {
-        
-        activityIndicatorView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        activityIndicatorView.active([
+            activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
     }
     
     func show() {

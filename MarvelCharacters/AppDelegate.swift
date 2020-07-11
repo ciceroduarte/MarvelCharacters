@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = .black
+        UINavigationBar.appearance().tintColor = .white
+
         let homeViewController = HomeViewController(withHomeViewModel: HomeViewModel())
         let navigationController = UINavigationController(rootViewController: homeViewController)
-        navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.barTintColor = .black
-        navigationController.navigationBar.tintColor = .white
         navigationController.delegate = navigationDelegate
         
         window?.makeKeyAndVisible()

@@ -20,6 +20,22 @@
                     "path": "http://www.google.com.br",
                     "extension": "png"
                 }
+            },
+            {
+                "name": "cicero",
+                "description": "description",
+                "comics": {
+                    "collectionURI": "http://www.google.com.br",
+                    "available": 1
+                },
+                "series": {
+                    "collectionURI": "http://www.google.com.br",
+                    "available": 1
+                },
+                "thumbnail": {
+                    "path": "http://www.google.com.br",
+                    "extension": "png"
+                }
             }
         ]
     }

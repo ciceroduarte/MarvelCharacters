@@ -16,17 +16,9 @@ class CharacterView: UIView {
     
     convenience init() {
         self.init(frame: CGRect.zero)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
         self.addSubviews(views: [name, image])
         setupViews()
         setupConstraints()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        return nil
     }
     
     func height(forWidth width: CGFloat) -> CGFloat {

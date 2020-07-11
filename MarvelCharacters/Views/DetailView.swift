@@ -17,7 +17,7 @@ class DetailView: UIView {
     let tryAgainView: TryAgainView
     
     init() {
-        characterView = CharacterView(frame: CGRect.zero)
+        characterView = CharacterView()
         loadingView = LoadingView()
         segmentedControl = UISegmentedControl(items: [LocalizedStrings.comics, LocalizedStrings.series])
         tryAgainView = TryAgainView()
@@ -51,7 +51,7 @@ class DetailView: UIView {
     
     func setupConstraints() {
         
-        let characterViewHeight = characterView.height(forWidth: characterView.superview?.frame.width ?? 150.0)
+        let characterViewHeight = characterView.height(forWidth: frame.width)
         let margin: CGFloat = 8.0
 
         characterView.active([

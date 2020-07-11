@@ -38,8 +38,11 @@ extension TransitionController {
         image.clipsToBounds = true
         image.backgroundColor = .clear
 
+        let navigationBarHeight = detail.navigationController?.navigationBar.frame.height ?? 0.0
+        let topBarHeight = UIApplication.shared.statusBarFrame.size.height + navigationBarHeight
+
         let originalFrame = CGRect(x: image.frame.origin.x + cellFrame.origin.x,
-                                   y: image.frame.origin.y + cellFrame.origin.y + 64,
+                                   y: image.frame.origin.y + cellFrame.origin.y + topBarHeight,
                                    width: image.frame.size.width,
                                    height: image.frame.size.height)
         
@@ -54,7 +57,7 @@ extension TransitionController {
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
             image.frame = CGRect(origin:
                 CGPoint(x: detail.contentView.characterView.image.frame.origin.x,
-                        y: detail.contentView.characterView.image.frame.origin.y + 64),
+                        y: detail.contentView.characterView.image.frame.origin.y + topBarHeight),
                         size: image.frame.size)
             
             detail.view.alpha = 1.0

@@ -13,18 +13,20 @@ extension TransitionController {
     func from(_ detail: DetailViewController,
               toHome home: HomeViewController,
               with transitionContext: UIViewControllerContextTransitioning) {
-        
+
+        home.view.frame = transitionContext.finalFrame(for: home)
+        home.view.alpha = 0.0
+
+        transitionContext.containerView.addSubview(home.view)
+
         let collectionView = home.contentView.collectionView
 
         guard let index = home.lastSelectedIndexPath,
-            let cell = collectionView.cellForItem(at: index) as? CharacterCell,
-            let attributes = collectionView.layoutAttributesForItem(at: index) else {
-                transitionContext.completeTransition(true)
-                return
+                    let cell = collectionView.cellForItem(at: index) as? CharacterCell,
+                    let attributes = collectionView.layoutAttributesForItem(at: index) else {
+                        animate(destinationView: home.view, transitionContext: transitionContext)
+                        return
         }
-        
-        home.view.frame = transitionContext.finalFrame(for: home)
-        home.view.alpha = 0.0
 
         let cellOrigin = collectionView.convert(attributes.frame.origin, to: collectionView.superview)
         let contentViewY = detail.contentView.frame.origin.y
@@ -37,19 +39,16 @@ extension TransitionController {
         cell.characterView.image.isHidden = true
         collectionView.isHidden = false
 
-        transitionContext.containerView.addSubview(home.view)
         transitionContext.containerView.addSubview(image)
-        
-        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-            image.frame.origin = CGPoint(x: cellOrigin.x + cell.characterView.image.frame.origin.x,
-                                         y: cellOrigin.y + cell.characterView.image.frame.origin.y + contentViewY)
 
-            home.view.alpha = 1.0
-        }, completion: { _ in
-            image.removeFromSuperview()
+        let destination = CGPoint(x: cellOrigin.x + cell.characterView.image.frame.origin.x,
+                                  y: cellOrigin.y + cell.characterView.image.frame.origin.y + contentViewY)
+
+        animate(image,
+                toPoint: destination,
+                destinationView: home.view,
+                transitionContext: transitionContext, completion: {
             cell.characterView.image.isHidden = false
-            
-            transitionContext.completeTransition(true)
         })
     }
 }

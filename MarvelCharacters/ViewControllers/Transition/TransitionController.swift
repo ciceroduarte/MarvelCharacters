@@ -39,4 +39,20 @@ class TransitionController: NSObject, UIViewControllerAnimatedTransitioning {
 
         return image
     }
+
+    func animate(_ view: UIView? = nil,
+                 toPoint point: CGPoint = .zero,
+                 destinationView: UIView,
+                 transitionContext: UIViewControllerContextTransitioning,
+                 completion: (() -> Void)? = nil) {
+
+        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
+            view?.frame.origin = CGPoint(x: point.x, y: point.y)
+            destinationView.alpha = 1.0
+        }, completion: { _ in
+            view?.removeFromSuperview()
+            completion?()
+            transitionContext.completeTransition(true)
+        })
+    }
 }

@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "MARVEL"
+        navigationItem.title = viewModel.title
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
         contentView.collectionView.prefetchDataSource = self

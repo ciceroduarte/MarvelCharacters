@@ -16,6 +16,7 @@ protocol HomeViewModelDelegate: class {
 class HomeViewModel {
     
     // MARK: Properties
+    let title = "MARVEL"
     weak var viewDelegate: HomeViewModelDelegate?
     let charactersService = CharactersService()
     private var charactersList: [Character] = [Character]() {

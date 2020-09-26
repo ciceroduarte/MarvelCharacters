@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol TryAgainDelegate: AnyObject {
+    func tryAgain()
+}
+
 class TryAgainView: UIView {
     
     let tryAgainButton: UIButton
-    
+    weak var delegate: TryAgainDelegate?
+
     init() {
         
         tryAgainButton = UIButton(frame: CGRect.zero)
@@ -33,7 +38,8 @@ class TryAgainView: UIView {
         tryAgainButton.setTitle(LocalizedStrings.tryAgain, for: .normal)
         tryAgainButton.tintColor = .black
         tryAgainButton.setTitleColor(.black, for: .normal)
-        
+        tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
+
         tryAgainButton.layer.borderWidth = 1.5
         tryAgainButton.layer.borderColor = UIColor.black.cgColor
         tryAgainButton.layer.cornerRadius = 5
@@ -55,5 +61,9 @@ class TryAgainView: UIView {
     
     func hide() {
         isHidden = true
+    }
+
+    @objc func tryAgain() {
+        delegate?.tryAgain()
     }
 }

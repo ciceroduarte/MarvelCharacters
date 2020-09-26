@@ -8,17 +8,33 @@
 
 import UIKit
 
+typealias HomeViewDelegate = UICollectionViewDataSource &
+                                UICollectionViewDelegate &
+                                UICollectionViewDataSourcePrefetching &
+                                DynamicHeightLayoutDelegate &
+                                DZNEmptyDataSetSource &
+                                TryAgainDelegate
+
 class HomeView: UIView {
     
     let collectionView: UICollectionView
-    let loadingView: LoadingView
-    let tryAgainView: TryAgainView
-    
+    private let loadingView = LoadingView()
+    private let tryAgainView = TryAgainView()
+
+    weak var delegate: HomeViewDelegate? {
+        didSet {
+            collectionView.dataSource = delegate
+            collectionView.delegate = delegate
+            collectionView.prefetchDataSource = delegate
+            (collectionView.collectionViewLayout as? DynamicHeightLayout)?.delegate = delegate
+            collectionView.emptyDataSetSource = delegate
+        }
+    }
+
     init() {
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: DynamicHeightLayout())
-        loadingView = LoadingView()
-        tryAgainView = TryAgainView()
-        
+        collectionView.register(CharacterCell.self)
+
         super.init(frame: CGRect.zero)
         setupViews()
         setupConstraints()
@@ -60,5 +76,9 @@ class HomeView: UIView {
         collectionView.fillSuperview()
         loadingView.fillSuperview()
         tryAgainView.fillSuperview()
+    }
+
+    func reloadData() {
+        collectionView.reloadData()
     }
 }

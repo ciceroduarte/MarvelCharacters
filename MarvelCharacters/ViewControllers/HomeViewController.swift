@@ -34,22 +34,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = viewModel.title
-        contentView.collectionView.dataSource = self
-        contentView.collectionView.delegate = self
-        contentView.collectionView.prefetchDataSource = self
-        contentView.collectionView.emptyDataSetSource = self
-        (contentView.collectionView.collectionViewLayout as? DynamicHeightLayout)?.delegate = self
-
-        contentView.collectionView.register(CharacterCell.self)
-
-        contentView.tryAgainView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
-
+        contentView.delegate = self
         viewModel.viewDelegate = self
-        viewModel.loadCharacters()
-    }
 
-    @objc func tryAgain() {
-        contentView.showLoadingView()
         viewModel.loadCharacters()
     }
 }
@@ -57,7 +44,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewModelDelegate {
     func charactersDidChange() {
         contentView.showCollectionView()
-        contentView.collectionView.reloadData()
+        contentView.reloadData()
     }
 
     func fetchDidFailed() {
@@ -76,15 +63,12 @@ extension HomeViewController: UICollectionViewDelegate {
 }
 
 extension HomeViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfCharacters()
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CharacterCell
         cell.config(withViewModel: viewModel.characterCellViewModel(at: indexPath))
         return cell
@@ -95,7 +79,6 @@ extension HomeViewController: DynamicHeightLayoutDelegate {
     func collectionView(collectionView: UICollectionView,
                         heightForItemAtIndexPath indexPath: IndexPath,
                         withWidth width: CGFloat) -> CGFloat {
-
         let cell = CharacterCell(frame: CGRect.zero)
         cell.config(withViewModel: viewModel.characterCellViewModel(at: indexPath))
         return cell.height(forWidth: width)
@@ -113,5 +96,12 @@ extension HomeViewController: UICollectionViewDataSourcePrefetching {
 extension HomeViewController: DZNEmptyDataSetSource {
     func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString {
         return LocalizedStrings.emptyData
+    }
+}
+
+extension HomeViewController: TryAgainDelegate {
+    func tryAgain() {
+        contentView.showLoadingView()
+        viewModel.loadCharacters()
     }
 }

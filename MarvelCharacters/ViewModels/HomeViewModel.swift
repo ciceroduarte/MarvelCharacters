@@ -18,11 +18,15 @@ class HomeViewModel {
     // MARK: Properties
     let title = "MARVEL"
     weak var viewDelegate: HomeViewModelDelegate?
-    let charactersService = CharactersService()
+    let charactersService: CharactersService
     private var charactersList: [Character] = [Character]() {
         didSet {
             self.viewDelegate?.charactersDidChange()
         }
+    }
+
+    init(withCharactersService charactersService: CharactersService = CharactersService()) {
+        self.charactersService = charactersService
     }
     
     func loadCharacters () {

@@ -50,4 +50,66 @@ class HomeViewControllerTests: KIFTestCase {
 
         XCTAssertNotNil(emptyData)
     }
+
+    func testOnEndReachedShouldCallLoadCharacters() {
+        let expec = expectation(description: "Should call load characters two times")
+        let sut = HomeViewModelSpy(withCharactersService: StubCharactersService())
+        let homeViewController = HomeViewController(withHomeViewModel: sut)
+
+        homeViewController.loadViewIfNeeded()
+        let lastIndex = sut.numberOfCharacters() - 1
+        homeViewController.collectionView(homeViewController.contentView.collectionView,
+                                          prefetchItemsAt: [IndexPath(row: 0, section: lastIndex)])
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertEqual(sut.loadCharactersCount, 2)
+            expec.fulfill()
+        }
+
+        wait(for: [expec], timeout: 1.0)
+    }
+
+    func testOnEndNotReachedShouldNotCallLoadCharacters() {
+        let expec = expectation(description: "Should not call load characters two times")
+        let sut = HomeViewModelSpy(withCharactersService: StubCharactersService(isEmpty: true))
+        let homeViewController = HomeViewController(withHomeViewModel: sut)
+
+        homeViewController.loadViewIfNeeded()
+        homeViewController.collectionView(homeViewController.contentView.collectionView,
+                                          prefetchItemsAt: [IndexPath(row: 0, section: 1)])
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertEqual(sut.loadCharactersCount, 1)
+            expec.fulfill()
+        }
+
+        wait(for: [expec], timeout: 1.0)
+    }
+
+    private class HomeViewModelSpy: HomeViewModel {
+        var loadCharactersCount = 0
+        override func loadCharacters() {
+            loadCharactersCount += 1
+            super.loadCharacters()
+        }
+    }
+
+    private class StubCharactersService: CharactersService {
+        private let isEmpty: Bool
+
+        init(isEmpty: Bool = false) {
+            self.isEmpty = isEmpty
+        }
+
+        override func fetch<T>(listOf representable: T.Type,
+                               withURL url: URL?,
+                               completionHandler: @escaping (Result<[T], FetchError>) -> Void) where T: Decodable {
+            guard let character = CharacterMock.instance as? T else {
+                completionHandler(Result.failure(.networkFailed))
+                return
+            }
+            let resul: [T] = isEmpty ? [] : [character]
+            completionHandler(Result.success(resul))
+        }
+    }
 }

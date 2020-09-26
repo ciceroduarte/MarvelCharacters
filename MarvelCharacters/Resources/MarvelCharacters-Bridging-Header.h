@@ -7,5 +7,4 @@
 //
 
 #import <CommonCrypto/CommonCrypto.h>
-#import <UIScrollView_InfiniteScroll/UIScrollView+InfiniteScroll.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>

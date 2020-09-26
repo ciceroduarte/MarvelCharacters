@@ -11,14 +11,14 @@ import DZNEmptyDataSet
 
 class HomeViewController: UIViewController {
     
-    let homeViewModel: HomeViewModel
+    let viewModel: HomeViewModel
     
     lazy var contentView = HomeView()
 
     var lastSelectedIndexPath: IndexPath?
 
     init(withHomeViewModel homeViewModel: HomeViewModel) {
-        self.homeViewModel = homeViewModel
+        self.viewModel = homeViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,30 +36,27 @@ class HomeViewController: UIViewController {
         navigationItem.title = "MARVEL"
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
+        contentView.collectionView.prefetchDataSource = self
         contentView.collectionView.emptyDataSetSource = self
         (contentView.collectionView.collectionViewLayout as? DynamicHeightLayout)?.delegate = self
 
         contentView.collectionView.register(CharacterCell.self)
 
         contentView.tryAgainView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
-        contentView.collectionView.addInfiniteScroll { [weak self] _ -> Void in
-            self?.homeViewModel.loadCharacters()
-        }
 
-        homeViewModel.viewDelegate = self
-        homeViewModel.loadCharacters()
+        viewModel.viewDelegate = self
+        viewModel.loadCharacters()
     }
 
     @objc func tryAgain() {
         contentView.showLoadingView()
-        homeViewModel.loadCharacters()
+        viewModel.loadCharacters()
     }
 }
 
 extension HomeViewController: HomeViewModelDelegate {
     func charactersDidChange() {
         contentView.showCollectionView()
-        contentView.collectionView.finishInfiniteScroll()
         contentView.collectionView.reloadData()
     }
 
@@ -73,7 +70,7 @@ extension HomeViewController: UICollectionViewDelegate {
                         didSelectItemAt indexPath: IndexPath) {
         lastSelectedIndexPath = indexPath
         let detailViewController = DetailViewController(withViewModel:
-            homeViewModel.detailViewModel(for: indexPath))
+            viewModel.detailViewModel(for: indexPath))
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
@@ -82,14 +79,14 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
 
-        return homeViewModel.numberOfCharacters()
+        return viewModel.numberOfCharacters()
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CharacterCell
-        cell.config(withViewModel: homeViewModel.characterCellViewModel(at: indexPath))
+        cell.config(withViewModel: viewModel.characterCellViewModel(at: indexPath))
         return cell
     }
 }
@@ -100,8 +97,16 @@ extension HomeViewController: DynamicHeightLayoutDelegate {
                         withWidth width: CGFloat) -> CGFloat {
 
         let cell = CharacterCell(frame: CGRect.zero)
-        cell.config(withViewModel: homeViewModel.characterCellViewModel(at: indexPath))
+        cell.config(withViewModel: viewModel.characterCellViewModel(at: indexPath))
         return cell.height(forWidth: width)
+    }
+}
+
+extension HomeViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        guard let lastIndexPath = indexPaths.last,
+            lastIndexPath.row == viewModel.numberOfCharacters() - 1 else { return }
+        viewModel.loadCharacters()
     }
 }
 

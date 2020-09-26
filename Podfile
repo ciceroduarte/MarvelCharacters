@@ -6,7 +6,6 @@ target 'MarvelCharacters' do
   use_frameworks!
 
     pod 'Kingfisher'
-    pod 'UIScrollView-InfiniteScroll'
     pod 'DZNEmptyDataSet'
 
   target 'MarvelCharactersTests' do
